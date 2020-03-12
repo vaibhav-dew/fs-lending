@@ -10,19 +10,14 @@ import {
   LPListItem,
   LPSteps
 } from "./Style";
-import { useHistory } from "react-router-dom";
-import { Redirect } from "react-router-dom";
-import Header from "./Header";
+import { Link } from "react-router-dom";
+import Navbar from "../../../components/navbar/Navbar";
 
-function LandingPage(props) {
-  const getStarted = () => {
-    console.log("click");
-  };
-
+const  LandingPage = () => {
   return (
     <React.Fragment>
       <LPContainer>
-        <Header />
+        <Navbar isExit title="Credit Line" />
         <LPHeader>Activate in 3 Simple Steps</LPHeader>
         <LPStepWrapper>
           <LPSteper>1</LPSteper>
@@ -47,7 +42,7 @@ function LandingPage(props) {
           <LPListItem>One Time Setup</LPListItem>
           <LPListItem>End to End Digital Process</LPListItem>
         </LPList>
-        <LPButton onClick={getStarted}>Get Started</LPButton>
+        <Link to='/credit-line/pan-details' style={{textDecoration:'none'}}><LPButton>Get Started</LPButton></Link>
       </LPContainer>
     </React.Fragment>
   );
