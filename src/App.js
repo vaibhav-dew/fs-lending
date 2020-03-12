@@ -10,7 +10,7 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/credit-line/" component={LandingPage} />
-          <Route path="/credit-line/confirm-limit" component={ConfirmLimit} />
+          <Route path="/credit-line/pan-details" component={PanDetails} />
           <Route path="/credit-line/confirm-limit" component={ConfirmLimit} />
         </Switch>
       </Fragment>
