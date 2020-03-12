@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./containers/home/Home";
+import ConfirmLimit from "./containers/credit-line/landing-page/LandingPage";
 import ConfirmLimit from "./containers/credit-line/confirm-limit/ConfirmLimit";
 
 const App = () => {
