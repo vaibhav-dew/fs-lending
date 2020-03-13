@@ -16,9 +16,9 @@ const App = () => {
           <Route exact path="/credit-line/">
             <LandingPage />
           </Route>
-          <Route path="/credit-line/pan-details">
-            <PanDetails />
-          </Route>
+          <Route path="/credit-line/pan-details" component={PanDetails}  />
+            {/* <PanDetails />
+          </Route> */}
           <Route path="/credit-line/confirm-limit">
             <ConfirmLimit />
           </Route>

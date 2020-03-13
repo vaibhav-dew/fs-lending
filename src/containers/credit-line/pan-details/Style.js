@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const PDContainer = styled.div `
     margin:0;
     font-style:sans-serif;
+    display:block;
 `;
 export const PDHeader = styled.h2 `
         margin: 25px 0 10px 0;
@@ -23,6 +24,7 @@ export const PDDetails = styled.h1 `
 
 export const PDInput = styled.input `
     width:90%;
+    font-size:16px;
     outline:none;
     border: none;
     border-bottom: 1px solid #000000;
@@ -47,4 +49,10 @@ padding: 14px 28px;
 font-size: 16px;
 cursor: pointer;
 text-align: center;
+`;
+
+export const PDPanValidation = styled.span`
+  font-size:16px;
+  color:red;
+  padding: 18px;
 `;
