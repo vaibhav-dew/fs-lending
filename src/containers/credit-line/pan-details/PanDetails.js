@@ -4,12 +4,14 @@ import {PDContainer,PDHeader, PDStepHeader,PDDetails,PDInput,PDButton,PDPanValid
 import PropTypes from "prop-types";
 import axios from 'axios';
 import Loader from "../../../components/Loader/Loader";
+import InvalidDetailsModal from './InvalidDetailsModal';
 
 const PanDetails = (props) => {
   const [panNumber, setPanNumber] = useState('');
   const [panName, setPanName] = useState('');
   const [isLOading, setIsLoading] = useState(false);
-  const [isPanNumberValid, setIsPanNumberValid] = useState(true)
+  const [isPanNumberValid, setIsPanNumberValid] = useState(true);
+  const [isInvalidDetails,setisInvalidDetails] = useState(false)
   const enabled = panNumber.length === 10 && panName.length > 0;
   useEffect(() => {
 
@@ -33,6 +35,7 @@ const PanDetails = (props) => {
           if (res.data.result.name === panName.toUpperCase()) {
             props.history.push('/credit-line/confirm-limit')
           } else {
+            setisInvalidDetails(!isInvalidDetails)
             alert("pancard details did not matched")
           }
         }
@@ -55,6 +58,9 @@ const PanDetails = (props) => {
       setIsPanNumberValid(false)
     }
   }
+  const handleInvalidDetailsModal = () =>{
+    setisInvalidDetails(!isInvalidDetails)
+  }
   return (
     <React.Fragment>
       {isLOading ? <Loader/> : 
@@ -67,6 +73,7 @@ const PanDetails = (props) => {
         {isPanNumberValid ? '': <PDPanValidation>Invalid Pan</PDPanValidation>}
         <PDInput placeholder="Full Name (as per PAN card )" value={panName} style={{textTransform:"capitalize"}} onChange={e => setPanName(e.target.value)} ></PDInput>
         <PDButton disabled={!enabled} onClick={verifyPan} >Verify</PDButton>
+        {isInvalidDetails ? <InvalidDetailsModal onClose={handleInvalidDetailsModal}/> : null}
       </PDContainer>}
     </React.Fragment>
   )
