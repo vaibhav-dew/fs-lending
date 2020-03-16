@@ -15,6 +15,9 @@ const Home = () => {
         <li>
           <Link to="/credit-line/confirm-limit">Confirm Limit</Link>
         </li>
+        <li>
+          <Link to="/credit-line/kyc-details">KYC details</Link>
+        </li>
       </ul>
     </div>
   );
