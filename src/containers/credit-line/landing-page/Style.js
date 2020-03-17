@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const HeaderContainer = styled.div`
+export const HeaderContainer = styled.div `
     font-family:sans-serif;
     font-size:20px;
     background-color:#DCDCDC;
@@ -70,6 +70,7 @@ export const LPListItem = styled.li `
     margin:0 0 5px 30px;
     `;
 export const LPButton = styled.button `
+        outline:none;
         display: block;
         border:none;
         border-radius: 10px;
@@ -79,4 +80,4 @@ export const LPButton = styled.button `
         font-size: 16px;
         cursor: pointer;
         text-align: center;
-  `
+  `;
