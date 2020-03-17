@@ -1,31 +1,20 @@
 import styled from 'styled-components';
 
-export const HeaderContainer = styled.div `
-    font-family:sans-serif;
-    font-size:20px;
-    background-color:#DCDCDC;
-    width:100%;
-    padding: 10px;
-    text-align: center;
-    margin-top: -8px;
-    margin-left: -12px;
-    `;
-
 export const LPContainer = styled.div `
         font-family:sans-serif;
         margin:0;
     `;
-export const LPHeader = styled.h2 `
+export const Header = styled.h2 `
         margin: 25px 0 25px;
         font-size: 20px;
         text-align:center;
     `;
-export const LPSteps = styled.h2 `
+export const Steps = styled.h2 `
         margin: 0 0 1px;
         font-size: 18px;
         font-weight: normal;
     `;
-export const LPStepWrapper = styled.div `
+export const StepWrapper = styled.div `
        padding:0 0 15px 70px;
        position: relative;
        &:after{
@@ -38,7 +27,7 @@ export const LPStepWrapper = styled.div `
         background:#ccc;
        }
     `;
-export const LPSteper = styled.div `
+export const Steper = styled.div `
         margin-left:25px;
         display:block;
         position: absolute;
@@ -53,23 +42,23 @@ export const LPSteper = styled.div `
         line-height:25px;
         text-align:center;
     `;
-export const LPWrapperConditions = styled.p `
+export const WrapperConditions = styled.p `
         margin: 0;
         font-size: 15px;
         color: #333;
         opacity: 0.5;
     `;
-export const LPList = styled.ul `
-    margin-top:-10px;
-    padding: 0px 20px;
-    background-color: #fff;
-    `;
+export const List = styled.ul `
+margin-top:-10px;
+padding: 0px 20px;
+background-color: #fff;
+`;
 
-export const LPListItem = styled.li `
-    padding: 5px 0px;
-    margin:0 0 5px 30px;
-    `;
-export const LPButton = styled.button `
+export const ListItem = styled.li `
+padding: 5px 0px;
+margin:0 0 5px 30px;
+`;
+export const StartedButton = styled.button `
         outline:none;
         display: block;
         border:none;
