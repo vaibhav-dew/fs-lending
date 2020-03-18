@@ -20,7 +20,7 @@ const  LandingPage = (props) => {
   return (
     <React.Fragment>
       <LPContainer>
-        <Navbar isExit title="Credit Line" />
+        <Navbar isExit title="Credit Line" route='/' />
         <Header>Activate in 3 Simple Steps</Header>
         <StepWrapper>
           <Steper>1</Steper>

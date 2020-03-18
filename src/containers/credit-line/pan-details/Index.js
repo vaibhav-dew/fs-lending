@@ -73,7 +73,7 @@ const PanDetails = props => {
         <Loader />
       ) : (
         <PDContainer>
-          <Navbar isExit={false} title="Credit Line" />
+          <Navbar isExit={false} title="Credit Line" route='/credit-line'/>
           <PDHeader>Confirm Limit</PDHeader>
           <PDStepHeader>Step 1 of 3</PDStepHeader>
           <PDDetails>Enter your PAN details</PDDetails>
