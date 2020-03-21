@@ -12,43 +12,47 @@ import {
 import PropTypes from "prop-types";
 import Loader from "../../../components/Loader/Loader";
 import { useDispatch } from "react-redux";
-import {savePanDetails} from './Action'
-import axios from 'axios';
+import { savePanDetails } from "./Action";
+import axios from "axios";
 
 const PanDetails = props => {
   const dispatch = useDispatch();
-  const [isLoading,setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
   const [panNumber, setPanNumber] = useState("");
   const [panName, setPanName] = useState("");
   const [isPanNumberValid, setIsPanNumberValid] = useState(true);
   const enabled = panNumber.length === 10 && panName.length > 0;
   const verifyPan = () => {
-    setIsLoading(true)
+    setIsLoading(true);
     let head = {
       headers: {
-        'Content-Type': "application/json",
-        'x-karza-key': "qZcPjx96QuNOEtf4"
+        "Content-Type": "application/json",
+        "x-karza-key": "qZcPjx96QuNOEtf4"
       }
-    }
+    };
     let data = JSON.stringify({
-      "consent": "Y",
-      "pan": panNumber
-    })
-    axios.post('https://testapi.karza.in/v2/pan', data, head)
+      pan: panNumber,
+      name: panName
+    });
+    axios
+      .post("/tatapay/lending/storing/cutomerinfo", data)
       .then(response => {
-        setIsLoading(false)
-        if (response && response.request.status === 200) {
-         dispatch(savePanDetails(panName, panNumber))
-          props.history.push('/credit-line/confirm-limit')
-      }else {
-            alert("pancard details did not matched")
-          }
-      }).catch((error) => {
-        setIsLoading(false)
-        console.log("invalid")
-        console.log(error)
+        console.log(response);
+        //   debugger;
+        //   setIsLoading(false)
+        //   if (response && response.status === 200) {
+        //    dispatch(savePanDetails(panName, panNumber))
+        //     props.history.push('/credit-line/confirm-limit')
+        // }else {
+        //       alert("pancard details did not matched")
+        //     }
       })
-  }
+      .catch(error => {
+        setIsLoading(false);
+        console.log("invalid");
+        console.log(error);
+      });
+  };
   const handlePanNumber = e => {
     if (
       e.target.value &&
@@ -73,7 +77,7 @@ const PanDetails = props => {
         <Loader />
       ) : (
         <PDContainer>
-          <Navbar isExit={false} title="Credit Line" route='/credit-line'/>
+          <Navbar isExit title="Credit Line" route="/credit-line" />
           <PDHeader>Confirm Limit</PDHeader>
           <PDStepHeader>Step 1 of 3</PDStepHeader>
           <PDDetails>Enter your PAN details</PDDetails>

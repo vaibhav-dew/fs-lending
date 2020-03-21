@@ -4,7 +4,7 @@ import Navbar from "../../../components/navbar/Navbar";
 const ConfirmLimit = () => {
   return (
     <div>
-      <Navbar isExit={false} title="Credit Line" />
+      <Navbar isExit title="Credit Line" />
       <br />
       Header
       <br />
