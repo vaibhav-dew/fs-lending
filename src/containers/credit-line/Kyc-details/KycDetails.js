@@ -1,147 +1,70 @@
-import React, {
-    useState
-} from "react";
+import React, { useState } from "react";
 import Navbar from "../../../components/navbar/Navbar";
+import ConfirmNavbar from "../../../components/confirm-navbar/ConfirmNavbar";
 import {
-    KDContainer,
-    KDHeader,
-    KDNavConfirmation,
-    KDNavConfirmationItem,
-    KDHorizontal,
-    KDStepHeader,
-    KDDetails,
-    KDCompelteOption,
-    KDCompelteOptionBorder,
-    KDCompelteOptionValue,
-    KDCompelteOptionBorderContent,
-    KDCompelteOptionWrapper,
-    KDCompelteOptionDetailsList,
-    KDCompelteOptionDetailsListTitleDetails,
-    KDCompelteOptionSubValue,
-} from './Style';
+  Container,
+  Header,
+  Horizontal,
+  StepHeader,
+  Details,
+  Option,
+  OptionContainer,
+  OptionValue,
+  OptionSubValue,
+  OptionWrapper
+} from "./Style";
+import Instructions from "./Instructions";
 
-const KycDetails = () =>{
-    const [completeOption,setCompleteOption] = useState('')
-    const handleCompleteOption = (e) => {
-        console.log(e.target.value)
-        setCompleteOption(e.target.value)
-    }
-    return (
-        <React.Fragment>
-            <KDContainer>
-                <Navbar isExit={false} title="Credit Line"/>
-                <KDNavConfirmation>
-                    <KDNavConfirmationItem>
-                        @
-                    </KDNavConfirmationItem>
-                    <KDNavConfirmationItem style={{marginLeft:'-50px'}}>
-                        1.Confirm Eligibility
-                    </KDNavConfirmationItem>
-                    <KDNavConfirmationItem>
-                        Details
-                    </KDNavConfirmationItem> 
-                </KDNavConfirmation>
-                <KDHorizontal></KDHorizontal>
-                <KDHeader>
-                    KYC
-                </KDHeader>
-                <KDStepHeader>Step 2 of 3</KDStepHeader>
-                <KDDetails>Select how you would like to complete your KYC </KDDetails>
-                <KDCompelteOptionBorder>
-                    <KDCompelteOptionBorderContent>
-                        <KDCompelteOption type='radio' name= 'optionValue' value="aadhar" onChange={handleCompleteOption} ></KDCompelteOption>
-                        <KDCompelteOptionWrapper>
-                        <KDCompelteOptionValue>AADHAR (Instant)</KDCompelteOptionValue>
-                        <KDCompelteOptionSubValue>Take less than 30 secconds. Select this if your
-                            Aadhar is updated with your mobile number.
-                        </KDCompelteOptionSubValue>
-                        </KDCompelteOptionWrapper>
-                    </KDCompelteOptionBorderContent> 
-                </KDCompelteOptionBorder>
-                <KDCompelteOptionBorder style={{marginBottom:'10px'}}>
-                    <KDCompelteOptionBorderContent>
-                        <KDCompelteOption type='radio' name= 'optionValue' value="document" onChange={handleCompleteOption}></KDCompelteOption>
-                        <KDCompelteOptionWrapper>
-                        <KDCompelteOptionValue>Document pick-up</KDCompelteOptionValue>
-                        <KDCompelteOptionSubValue>Limit activation in 24 Hours after
-                            Document is picked up
-                        </KDCompelteOptionSubValue>
-                        </KDCompelteOptionWrapper>
-                    </KDCompelteOptionBorderContent> 
-                </KDCompelteOptionBorder>
-                {completeOption==='aadhar' ? (
-                <div>
-                    <KDCompelteOptionDetailsList>
-                         <KDCompelteOptionDetailsList> Please Note: </KDCompelteOptionDetailsList>   
-                         <KDCompelteOptionDetailsListTitleDetails >
-                            KYC via Aadhar is 4 step process 
-                        </KDCompelteOptionDetailsListTitleDetails> 
-                    </KDCompelteOptionDetailsList>
-                    <KDCompelteOptionDetailsList>
-                         <KDCompelteOptionDetailsList> Step 1: </KDCompelteOptionDetailsList>   
-                         <KDCompelteOptionDetailsListTitleDetails >
-                            Enter your Aadhar Number and captcha 
-                        </KDCompelteOptionDetailsListTitleDetails> 
-                    </KDCompelteOptionDetailsList>
-                    <KDCompelteOptionDetailsList>
-                         <KDCompelteOptionDetailsList> Step 2: </KDCompelteOptionDetailsList>   
-                         <KDCompelteOptionDetailsListTitleDetails >
-                            Set a 4 digit share code of your choice
-                        </KDCompelteOptionDetailsListTitleDetails> 
-                    </KDCompelteOptionDetailsList>
-                    <KDCompelteOptionDetailsList>
-                         <KDCompelteOptionDetailsList> Step 3: </KDCompelteOptionDetailsList>   
-                         <KDCompelteOptionDetailsListTitleDetails >
-                            Enter OTP sent to your mobile number
-                        </KDCompelteOptionDetailsListTitleDetails> 
-                    </KDCompelteOptionDetailsList>
-                    <KDCompelteOptionDetailsList>
-                         <KDCompelteOptionDetailsList> Step 4: </KDCompelteOptionDetailsList>   
-                         <KDCompelteOptionDetailsListTitleDetails >
-                             Share the share code you just set with us
-                        </KDCompelteOptionDetailsListTitleDetails> 
-                    </KDCompelteOptionDetailsList>
-                </div>
-                ) : null} 
-                {completeOption==='document' ? (
-                <div>
-                    <KDCompelteOptionDetailsList>
-                         <KDCompelteOptionDetailsList> Please Note: </KDCompelteOptionDetailsList>   
-                         <KDCompelteOptionDetailsListTitleDetails >
-                            KYC via Aadhar is 4 step process 
-                        </KDCompelteOptionDetailsListTitleDetails> 
-                    </KDCompelteOptionDetailsList>
-                    <KDCompelteOptionDetailsList>
-                         <KDCompelteOptionDetailsList> Step 1: </KDCompelteOptionDetailsList>   
-                         <KDCompelteOptionDetailsListTitleDetails >
-                            Enter your Aadhar Number and captcha 
-                        </KDCompelteOptionDetailsListTitleDetails> 
-                    </KDCompelteOptionDetailsList>
-                    <KDCompelteOptionDetailsList>
-                         <KDCompelteOptionDetailsList> Step 2: </KDCompelteOptionDetailsList>   
-                         <KDCompelteOptionDetailsListTitleDetails >
-                            Set a 4 digit share code of your choice
-                        </KDCompelteOptionDetailsListTitleDetails> 
-                    </KDCompelteOptionDetailsList>
-                    <KDCompelteOptionDetailsList>
-                         <KDCompelteOptionDetailsList> Step 3: </KDCompelteOptionDetailsList>   
-                         <KDCompelteOptionDetailsListTitleDetails >
-                            Enter OTP sent to your mobile number
-                        </KDCompelteOptionDetailsListTitleDetails> 
-                    </KDCompelteOptionDetailsList>
-                    <KDCompelteOptionDetailsList>
-                         <KDCompelteOptionDetailsList> Step 4: </KDCompelteOptionDetailsList>   
-                         <KDCompelteOptionDetailsListTitleDetails >
-                             Share the share code you just set with us
-                        </KDCompelteOptionDetailsListTitleDetails> 
-                    </KDCompelteOptionDetailsList>
-                </div>
-                ) : null}           
-            </KDContainer>
-            
-        </React.Fragment>
-                     
-
-    );
-}
+const KycDetails = () => {
+  const [completeOption, setCompleteOption] = useState("");
+  const handleOption = e => {
+    console.log(e.target.value);
+    setCompleteOption(e.target.value);
+  };
+  return (
+    <React.Fragment>
+      <Container>
+        <Navbar isExit={true} title="Credit Line" route="/credit-line" />
+        <ConfirmNavbar
+          title="1. Confirm Eligibility"
+          route="/credit-line"
+        ></ConfirmNavbar>
+        <Horizontal />
+        <Header>KYC</Header>
+        <StepHeader>Step 2 of 3</StepHeader>
+        <Details>Select how you would like to complete your KYC </Details>
+        <OptionContainer>
+          <OptionWrapper>
+            <Option
+              type="radio"
+              name="value"
+              value="aadhar"
+              onChange={handleOption}
+            ></Option>
+            <OptionValue>AADHAR (Instant)</OptionValue>
+          </OptionWrapper>
+          <OptionSubValue>
+            Take less than 30 secconds. Select this if your Aadhar is updated
+            with your mobile number.
+          </OptionSubValue>
+        </OptionContainer>
+        <OptionContainer style={{ marginBottom: "10px" }}>
+          <OptionWrapper>
+            <Option
+              type="radio"
+              name="value"
+              value="document"
+              onChange={handleOption}
+            ></Option>
+            <OptionValue>Document pick-up</OptionValue>
+          </OptionWrapper>
+          <OptionSubValue>
+            Limit activation in 24 Hours after Document is picked up.
+          </OptionSubValue>
+        </OptionContainer>
+        {completeOption ? <Instructions value={completeOption} /> : ""}
+      </Container>
+    </React.Fragment>
+  );
+};
 export default KycDetails;

@@ -12,15 +12,13 @@ import {
 } from "./Style";
 import Navbar from "../../../components/navbar/Navbar";
 
-const  LandingPage = (props) => {
-  const {
-    history
-  } = props
-  const getStarted = () => history.push('/credit-line/pan-details')
+const LandingPage = props => {
+  const { history } = props;
+  const getStarted = () => history.push("/credit-line/pan-details");
   return (
     <React.Fragment>
       <LPContainer>
-        <Navbar isExit title="Credit Line" route='/' />
+        <Navbar isExit={false} title="Credit Line" route="/" />
         <Header>Activate in 3 Simple Steps</Header>
         <StepWrapper>
           <Steper>1</Steper>
@@ -49,6 +47,6 @@ const  LandingPage = (props) => {
       </LPContainer>
     </React.Fragment>
   );
-}
+};
 
 export default LandingPage;
