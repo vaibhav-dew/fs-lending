@@ -10,7 +10,7 @@ import {
   ListItem,
   Steps
 } from "./Style";
-import Navbar from "../../../components/navbar/Navbar";
+import Navbar from "../../../components/navbar/index";
 
 const LandingPage = props => {
   const { history } = props;

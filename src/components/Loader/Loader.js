@@ -1,9 +1,9 @@
 import * as React from "react";
-import Navbar from "../navbar/Navbar";
+import Navbar from "../navbar/index";
 import styled from 'styled-components';
 
 
-const Loader = () =>{
+const Loader = () => {
     const LoaderContent = styled.div`
         font-size:30px;
         width: 80%;
@@ -12,10 +12,10 @@ const Loader = () =>{
     `;
     return (
         <React.Fragment>
-            <Navbar isExit={false} title="Credit Line"/>
-            <LoaderContent> Loading...</LoaderContent> 
+            <Navbar isExit={false} title="Credit Line" />
+            <LoaderContent> Loading...</LoaderContent>
         </React.Fragment>
-                     
+
 
     );
 }

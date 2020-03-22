@@ -7,7 +7,7 @@ import {
     Conditions,
     ConfirmButton
 } from "./style";
-import Navbar from "../../../components/navbar/Navbar";
+import Navbar from "../../../components/navbar/index";
 import { Link } from "react-router-dom";
 import Details from "./Details";
 

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Navbar from "../../../components/navbar/Navbar";
-import ConfirmNavbar from "../../../components/confirm-navbar/ConfirmNavbar";
+import Navbar from "../../../components/navbar/index";
+import ConfirmNavbar from "../../../components/confirm-navbar/index";
 import {
   Container,
   Header,
