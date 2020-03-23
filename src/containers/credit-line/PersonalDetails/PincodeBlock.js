@@ -6,7 +6,7 @@ const PincodeBlock = () => {
   const [pincode, setPincode] = useState("");
   const [pincodeLocation, setPincodeLocation] = useState("");
   const getLocationFromPincode = async code => {
-    const pincodeApi = `https://maps.googleapis.com/maps/api/geocode/json?address=${code}&key=AIzaSyBLuUh7ApJHj9yv6JU12uYnVj4Nt1Ff5FY`;
+    const pincodeApi = `https://maps.googleapis.com/maps/api/geocode/json?address=${code}&key=${code}`;
     const result = await (await Axios.get(pincodeApi)).data.results;
     if (
       result &&
