@@ -6,6 +6,8 @@ import PanDetails from "./containers/credit-line/pan-details/Index";
 import ConfirmLimit from "./containers/credit-line/confirm-limit/ConfirmLimit";
 import KycDetails from "./containers/credit-line/Kyc-details/KycDetails";
 import { DetailConfirmation } from "./containers/credit-line/confirm-eligibility/index";
+import PersonalDetails from "./containers/credit-line/PersonalDetails";
+
 const App = () => {
   return (
     <Router>
@@ -24,6 +26,10 @@ const App = () => {
           </Route> */}
         <Route path="/credit-line/kyc-details" component={KycDetails} />
         <Route path="/credit-line/confirm" component={DetailConfirmation} />
+        <Route
+          path="/credit-line/personal-details"
+          component={PersonalDetails}
+        />
       </Switch>
     </Router>
   );
