@@ -13,7 +13,7 @@ const Home = () => {
           <Link to="/credit-line/pan-details">Pan Details</Link>
         </li>
         <li>
-          <Link to="/credit-line/confirm-limit">Confirm Limit</Link>
+          <Link to="/credit-line/personal-details">Personal Details</Link>
         </li>
         <li>
           <Link to="/credit-line/kyc-details">KYC details</Link>
