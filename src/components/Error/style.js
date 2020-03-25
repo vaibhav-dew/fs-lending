@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const ErrorWrapper = styled.div`
   position: fixed;
@@ -10,7 +10,7 @@ export const ErrorWrapper = styled.div`
   overflow: auto;
   background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.4);
-`
+`;
 
 export const ErrorModal = styled.div`
   background-color: #fefefe;
@@ -21,18 +21,26 @@ export const ErrorModal = styled.div`
   max-width: 400px;
   color: black;
   text-align: center;
-`
+`;
+
+export const RedirectButton = styled.a`
+  padding: 10px 20px;
+  background-color: #157bcf;
+  cursor: pointer;
+  text-decoration: none;
+  color: #fff;
+`;
 
 export const CloseBtn = styled.button`
   color: #aaa;
   float: right;
   font-size: 28px;
   font-weight: bold;
-`
+`;
 
 export const ErrorTitle = styled.span`
   color: #000;
   font-size: 24px;
   font-weight: bold;
   display: block;
-`
+`;
