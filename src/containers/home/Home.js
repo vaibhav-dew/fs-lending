@@ -21,6 +21,9 @@ const Home = () => {
         <li>
           <Link to="/credit-line/confirm">Confirm</Link>
         </li>
+        <li>
+          <Link to="/credit-line/activate-limit">Activate Limit</Link>
+        </li>
       </ul>
     </div>
   );
