@@ -6,7 +6,6 @@ export const CreditLineNav = styled.nav`
   display: flex;
 `
 export const CreditLineNavTitle = styled.div`
-  font-family: sans-serif;
   font-size: 20px;
   color: black;
   text-align: center;

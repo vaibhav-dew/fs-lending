@@ -3,10 +3,11 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./containers/home/Home";
 import LandingPage from "./containers/credit-line/landing-page/Index";
 import PanDetails from "./containers/credit-line/pan-details/Index";
-import ConfirmLimit from "./containers/credit-line/confirm-limit/ConfirmLimit";
 import KycDetails from "./containers/credit-line/Kyc-details/KycDetails";
 import { DetailConfirmation } from "./containers/credit-line/confirm-eligibility/index";
 import PersonalDetails from "./containers/credit-line/PersonalDetails";
+import Details from "./containers/credit-line/confirm-eligibility/Details";
+import ActivateLimit from "./containers/credit-line/Activate-limit";
 
 const App = () => {
   return (
@@ -21,7 +22,6 @@ const App = () => {
         <Route path="/credit-line/pan-details" component={PanDetails} />
         {/* <PanDetails />
           </Route> */}
-        <Route path="/credit-line/confirm-limit" component={ConfirmLimit} />
         {/* <ConfirmLimit />
           </Route> */}
         <Route path="/credit-line/kyc-details" component={KycDetails} />
@@ -29,6 +29,14 @@ const App = () => {
         <Route
           path="/credit-line/personal-details"
           component={PersonalDetails}
+        />
+        <Route
+          path="/credit-line/details"
+          component={Details}
+        />
+        <Route
+          path="/credit-line/activate-limit"
+          component={ActivateLimit}
         />
       </Switch>
     </Router>

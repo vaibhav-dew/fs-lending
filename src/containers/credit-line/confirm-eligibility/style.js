@@ -1,31 +1,29 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Container = styled.div`
-  font-family: sans-serif;
   width: 90%;
   margin: auto;
-  height: 100vh;
-`;
+`
 export const Header = styled.h2`
   margin: 25px 0 10px 0;
   font-size: 20px;
   text-align: center;
-`;
+`
 export const Steps = styled.p`
   width: 90%;
   margin: auto;
   text-align: center;
-`;
+`
 export const StepHeader = styled.p`
   margin: 45px 0 10px 0;
   font-size: 18px;
   text-align: center;
   font-weight: bold;
-`;
+`
 export const DetailContainer = styled.div`
   position: relative;
   padding: 1px 0 0 0;
-`;
+`
 export const EditOption = styled.div`
   padding: 0 0 0 0;
   margin: 0 0 0 0;
@@ -33,20 +31,22 @@ export const EditOption = styled.div`
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  background: #fff;
+  background-color: #fff;
   border: 1px solid #ccc;
   color: #333;
   text-align: center;
-`;
+`
 export const DetailOption = styled.div`
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  border: 1px solid #ccc;
   height: auto;
   margin-top: 15px;
   padding-bottom: 10px;
-`;
+  margin-left: 10px;
+  margin-right: 10px;
+`
 export const DetailWrapper = styled.div`
   margin: 10px 0 0 15px;
-`;
+`
 export const Value = styled.p`
   width: 50%;
   display: inline-block;
@@ -56,14 +56,18 @@ export const Value = styled.p`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  opacity: ${props => (props.detailHead ? "0.5" : 1)};
-`;
+  opacity: ${props => (props.detailHead ? '0.5' : 1)};
+`
 
 export const Conditions = styled.p`
   font-size: 14px;
   font-weight: normal;
-`;
-
+  margin-left: 10px;
+  margin-right: 10px;
+`
+export const Terms = styled.span`
+  text-decoration: underline;
+`
 export const ConfirmButton = styled.button`
   outline: none;
   display: block;
@@ -74,4 +78,4 @@ export const ConfirmButton = styled.button`
   font-size: 16px;
   cursor: pointer;
   text-align: center;
-`;
+`

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Navbar from '../../../components/navbar/index'
+import Navbar from '/home/harshk/fs-lending/src/components/navbar'
 import {
   Container,
   Header,
@@ -10,56 +10,65 @@ import {
   PanValidation
 } from './Style'
 import PropTypes from 'prop-types'
-// import Loader from '../Common/Loader/Loader'
-// import { useDispatch } from 'react-redux'
-// import { savePanDetails } from './Action'
-// import axios from 'axios'
+import { useDispatch } from 'react-redux'
+import { savePanDetails } from './Action'
+import axios from 'axios'
+import Loader from '../../../components/Loader/Loader'
+import Modal from '../../../components/Modal'
 
 const PanDetails = props => {
-  // const dispatch = useDispatch()
-  // const [isLoading, setIsLoading] = useState(false)
+  const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState({ exists: false, title: "", text: "" });
+  const [showPopup, setShowPopup] = useState(false)
   const [panNumber, setPanNumber] = useState('')
   const [panName, setPanName] = useState('')
   const [isPanNumberValid, setIsPanNumberValid] = useState(true)
   const enabled = panNumber.length === 10 && panName.length > 0
 
+
   /**
    * @description button click on verify
    */
   const verifyPan = () => {
-    props.history.push('/credit-line/confirm-limit')
-    // setIsLoading(true)
-    // const head = {
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //     'x-karza-key': 'qZcPjx96QuNOEtf4'
-    //   }
-    // }
-    // const data = JSON.stringify({
-    //   consent: 'Y',
-    //   pan: panNumber
-    // })
-    // axios
-    //   .post('https://testapi.karza.in/v2/pan', data, head)
-    //   .then(response => {
-    //     setIsLoading(false)
-    //     if (response && response.request.status === 200) {
-    //       dispatch(savePanDetails(panName, panNumber))
-    //       props.history.push('/credit-line/confirm-limit')
-    //     } else {
-    //       alert('pancard details did not matched')
-    //     }
-    //   })
-    //   .catch(err => {
-    //     if (err && err.response) {
-    //       // const {
-    //       //   response: { data: errorMessage }
-    //       // } = err
-    //       //dispatch(failuresavePanDetails(errorMessage))
-    //     }
-    //   })
-  }
+    setIsLoading(true)
+    const head = {
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    }
+    const data = JSON.stringify({
+      name: panName,
+      pan: panNumber
+    })
+    axios
+      .post('http://52.183.135.123:8090/tatapay/lending/storing/customerinfo', data, head)
+      .then(response => {
+        setIsLoading(false)
+        if (response && response.request.status === 200) {
+          if (response.data.message === "Records are successfully Inserted!") {
+            dispatch(savePanDetails(panName, panNumber))
+            props.history.push('/credit-line/personal-details')
+          }
+          else {
+            setError({
+              exists: true,
+              text: response.data.message
+            });
+          }
+        }
+      })
+      .catch(err => {
+        if (err && err.response) {
+          setIsLoading(false)
+          setError({
+            exists: true,
+            text: err.data.status,
+          })
+        }
+      })
 
+  }
   /**
    * @description handling pan regex
    */
@@ -75,9 +84,8 @@ const PanDetails = props => {
       setPanNumber(e.target.value)
     }
   }
-
   /**
-   * @description handling pan validation on focus out
+   * @description handling pan validate
    */
   const handlePanValidation = e => {
     if (e.target.value.length < 10) {
@@ -85,11 +93,25 @@ const PanDetails = props => {
     }
   }
 
+  const modalclick = () => {
+    setShowPopup(!showPopup)
+    setError({
+      exists: false
+    })
+  };
+  if (isLoading) {
+    return (
+      <Loader />
+    )
+  }
+  if (error.exists) {
+    return (
+      <Modal title={error.title} text={error.text} closePopUp={modalclick} />
+    )
+  }
+
   return (
     <>
-      {/* {isLoading ? (
-        <Loader />
-      ) : ( */}
       <Navbar isExit title='Credit Line' route='/credit-line' />
       <Container>
         <Header>Confirm Limit</Header>
@@ -114,17 +136,15 @@ const PanDetails = props => {
           Verify
         </Button>
       </Container>
-      {/*  )} */}
     </>
   )
 }
-
 PanDetails.propTypes = {
   panNumber: PropTypes.string,
   panName: PropTypes.string,
   isLoading: PropTypes.bool,
   isPanNumberValid: PropTypes.bool,
   isInvalidDetails: PropTypes.bool,
-  history: PropTypes.any
+  history: PropTypes.object
 }
 export default PanDetails

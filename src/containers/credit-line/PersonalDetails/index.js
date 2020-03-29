@@ -7,8 +7,10 @@ import EmploymentBlock from "./EmploymentBlock";
 import Error from "../../../components/Error";
 import Navbar from "../../../components/navbar";
 import ProceedButton from "../../../components/ProceedButton";
+import { useSelector } from "react-redux";
 
-const PersonalDetails = () => {
+const PersonalDetails = (props) => {
+  const state = useSelector(state => console.log(state))
   const [geoLocation, setGeoLocation] = useState({});
   const [error, setError] = useState({ exists: false, title: "", text: "" });
   const setLocationFromPosition = position => {
@@ -40,6 +42,7 @@ const PersonalDetails = () => {
         text: "Geolocation is not supported in this device!"
       });
   };
+  const handleClick = () => props.history.push('/credit-line/confirm')
   useEffect(() => {
     getGPSLocation();
   }, [geoLocation.coords]);
@@ -56,8 +59,9 @@ const PersonalDetails = () => {
       <ProceedButton
         active={true}
         content="Next"
-        route="/credit-line/kyc-details"
+        route="/credit-line/confirm"
       />
+      {/* <button onClick={handleClick}>click</button> */}
     </PersonalDetailsWrapper>
   );
 };

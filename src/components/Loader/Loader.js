@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import Navbar from "../navbar/index";
 import styled from 'styled-components';
 
