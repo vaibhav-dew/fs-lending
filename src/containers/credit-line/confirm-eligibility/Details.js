@@ -4,9 +4,8 @@ import {
     DetailOption,
     Value,
     DetailWrapper,
-    EditOption
 } from "./style";
-import { Link } from 'react-router-dom'
+import Navbar from "../../../components/navbar";
 
 export const Details = props => {
     const panNumber = "BJLPG1020R";
@@ -17,17 +16,9 @@ export const Details = props => {
 
     return (
         <>
-            <DetailContainer>
-                <EditOption>
-                    <Link to='/credit-line/pan-details'>
-                        <img
-                            src="https://image.flaticon.com/icons/svg/1250/1250925.svg"
-                            width="15"
-                            style={{ margin: "5px" }}
-                            alt="edit"
-                        />
-                    </Link>
-                </EditOption>
+            <Navbar route='/credit-line/kyc-details' />
+            <DetailContainer >
+                <h3 style={{ textAlign: 'center' }}>Details</h3>
                 <DetailOption>
                     <DetailWrapper>
                         <Value detailHead>Pan</Value>

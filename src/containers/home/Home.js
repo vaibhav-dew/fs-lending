@@ -16,11 +16,18 @@ const Home = () => {
           <Link to="/credit-line/personal-details">Personal Details</Link>
         </li>
         <li>
+          <Link to="/credit-line/confirm">Confirm</Link>
+        </li>
+        <li>
+          <Link to="/credit-line/activate-limit">Activate limit</Link>
+        </li>
+        <li>
           <Link to="/credit-line/kyc-details">KYC details</Link>
         </li>
         <li>
-          <Link to="/credit-line/confirm">Confirm</Link>
+          <Link to="/credit-line/details">Details of kyc</Link>
         </li>
+
       </ul>
     </div>
   );

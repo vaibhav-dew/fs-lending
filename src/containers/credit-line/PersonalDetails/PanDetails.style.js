@@ -7,13 +7,11 @@ export const PanDetailsWrapper = styled.div`
 
 export const HeaderH1 = styled.h1`
   text-align: center;
-  font-family: sans-serif;
   font-size: 20px;
 `
 
 export const HeaderH2 = styled.p`
   text-align: center;
-  font-family: sans-serif;
   font-size: 15px;
 `
 
@@ -30,12 +28,10 @@ export const CFPanDetailsBlockItem = styled.div`
 `
 
 export const CFPanDetailsTitle = styled.div`
-  font-family: sans-serif;
   font-size: 12px;
   color: #797979;
 `
 
 export const CFPanDetailsText = styled.div`
-  font-family: sans-serif;
   font-size: 15px;
 `

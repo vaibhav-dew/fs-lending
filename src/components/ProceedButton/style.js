@@ -8,7 +8,7 @@ export const Active = styled.a`
   padding-top: 10px;
   padding-bottom: 10px;
   width: 100%;
-  background: #157bcf;
+  background-color: #157bcf;
   color: #fff;
   display: block;
   outline: none;
@@ -21,7 +21,7 @@ export const Disabled = styled.span`
   padding-top: 10px;
   padding-bottom: 10px;
   width: 100%;
-  background: #797979;
+  background-color: #797979;
   color: #fff;
   display: block;
   outline: none;
