@@ -86,11 +86,11 @@ PersonalDetails.defaultProps = {
 };
 
 const mapStateToProps = state => ({
-  personalDetails: state.lending.personalDetails
+  personalDetails: state.personalDetails
 });
 
 const mapDispatchToProps = dispatch => ({
-  saveGeolocation: location => saveGeolocation(location)
+  saveGeolocation: location => dispatch(saveGeolocation(location))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PersonalDetails);
