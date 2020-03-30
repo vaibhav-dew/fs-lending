@@ -1,13 +1,16 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import Axios from "axios";
 import Input from "../../../components/Input";
+import { connect } from "react-redux";
+import { savePincode } from "./Actions";
 
-const PincodeBlock = () => {
+const PincodeBlock = props => {
   const [pincode, setPincode] = useState("");
   const [pincodeLocation, setPincodeLocation] = useState("");
   const getLocationFromPincode = async code => {
-    const pincodeApi = `https://maps.googleapis.com/maps/api/geocode/json?address=${code}&key=${code}`;
-    const result = await (await Axios.get(pincodeApi)).data.results;
+    const pincodeApi = `https://maps.googleapis.com/maps/api/geocode/json?address=${code}&key=AIzaSyBLuUh7ApJHj9yv6JU12uYnVj4Nt1Ff5FY`;
+    const result = (await Axios.get(pincodeApi)).data.results;
     if (
       result &&
       result.length > 0 &&
@@ -20,12 +23,14 @@ const PincodeBlock = () => {
       setPincodeLocation(address);
     }
   };
-  const changePincode = e => {
-    if (!isNaN(Number(e.target.value))) {
-      setPincode(e.target.value);
+  const changePincode = pincode => {
+    console.log("pincode", pincode);
+    if (pincode !== "" && !isNaN(Number(pincode))) {
       setPincodeLocation("");
-      if (e.target.value) getLocationFromPincode(e.target.value);
+      getLocationFromPincode(pincode);
     }
+    setPincode(pincode);
+    props.savePincode(pincode);
   };
   return (
     <div style={{ height: 100 }}>
@@ -35,7 +40,7 @@ const PincodeBlock = () => {
         name="pincode"
         placeholder="Pincode"
         value={pincode}
-        onChange={changePincode}
+        onChange={e => changePincode(e.target.value)}
         orientation={"block"}
         showHint
         hint={pincodeLocation}
@@ -45,4 +50,16 @@ const PincodeBlock = () => {
   );
 };
 
-export default PincodeBlock;
+PincodeBlock.propTypes = {
+  savePincode: PropTypes.func
+};
+
+PincodeBlock.defaultProps = {
+  savePincode
+};
+
+const mapDispatchToProps = dispatch => ({
+  savePincode: pincode => dispatch(savePincode(pincode))
+});
+
+export default connect(null, mapDispatchToProps)(PincodeBlock);

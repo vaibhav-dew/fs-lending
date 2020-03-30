@@ -7,9 +7,9 @@ import {
 
 const initialState = {
   geoLocation: {},
-  dateOfBirth: null,
+  dateOfBirth: '',
   pincode: '',
-  employmentType: null
+  employmentType: ''
 }
 
 const personalDetails = (state = initialState, action) => {
