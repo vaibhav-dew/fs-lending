@@ -23,7 +23,8 @@ const Input = ({
   showHint,
   hint,
   maxWidth,
-  fullWidth
+  fullWidth,
+  ...props
 }) => {
   return (
     <InputWrapper>
@@ -42,12 +43,15 @@ const Input = ({
           onChange={onChange}
           fullWidth={fullWidth}
           maxWidth={maxWidth}
+          {...props}
         />
         {startAdornment && <Adornment adornment={endAdornment} />}
       </div>
-      <InputHint>
-        <InputHintText>{hint}</InputHintText>
-      </InputHint>
+      {showHint && (
+        <InputHint>
+          <InputHintText>{hint}</InputHintText>
+        </InputHint>
+      )}
     </InputWrapper>
   )
 }
