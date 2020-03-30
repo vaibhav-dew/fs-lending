@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Navbar from "../../../components/navbar/index";
+import Navbar from "../../../components/Navbar";
 import ConfirmNavbar from "../../../components/confirm-navbar/index";
 import {
   Container,
