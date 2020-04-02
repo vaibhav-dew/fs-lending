@@ -61,7 +61,7 @@ const PersonalDetails = (props) => {
         content="Next"
         route="/credit-line/confirm"
       />
-      {/* <button onClick={handleClick}>click</button> */}
+      <button onClick={handleClick}>click</button>
     </PersonalDetailsWrapper>
   );
 };

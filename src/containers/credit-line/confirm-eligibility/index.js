@@ -15,18 +15,24 @@ import {
 } from "./style";
 import Navbar from "../../../components/navbar/index";
 import Modal from '../../../components/Modal'
-import { Link } from 'react-router-dom'
 import Axios from "axios";
 import Loader from '../../../components/Loader/Loader'
+import { useSelector } from "react-redux";
+
+
 export const DetailConfirmation = props => {
+    const state = useSelector(state => state)
+    console.log(state)
     const [modal, setModal] = useState(false);
     const [modalMsg, setModalMsg] = useState();
-    const panNumber = "BJLPG1020R";
-    const panName = "Harsh Kumar Gupta";
+    const [isActive, setIsActive] = useState(false);
+    const panNumber = state.panVerificationReducer.panNumber;
+    const panName = state.panVerificationReducer.panName;
     const dob = "26 November 1994";
     const pincode = "244412";
     const employmentType = "Salaried";
     const [isLoading, setIsLoading] = useState(false)
+
     const confirmDetails = () => {
         setIsLoading(true)
         const head = {
@@ -73,26 +79,36 @@ export const DetailConfirmation = props => {
         setModal(!modal)
         setModalMsg('Terms and Condition')
     };
+    const handleClick = () => {
+        console.log('hi')
+        setIsActive(!isActive)
+        console.log(props)
+        props.history.push({
+            pathname: '/credit-line/pan-details',
+            params: { panName, panNumber }
+        })
+
+    }
+
     return (
         <>
             <Navbar isExit route="/credit-line"></Navbar>
-            <Container>
+            <Container >
                 <Header>Confirm Limit</Header>
                 <Steps>Step 1 of 3</Steps>
                 <StepHeader>Confirm Details</StepHeader>
                 <Steps>
                     Please Review the details below as you won't able to change them later
                 </Steps>
-                <DetailContainer>
-                    <EditOption>
-                        <Link to='/credit-line/pan-details'>
-                            <img
-                                src="https://image.flaticon.com/icons/svg/1250/1250925.svg"
-                                width="15"
-                                style={{ margin: "5px" }}
-                                alt="edit"
-                            />
-                        </Link>
+                <DetailContainer >
+                    <EditOption onClick={handleClick}>
+                        <img
+
+                            src="https://image.flaticon.com/icons/svg/1250/1250925.svg"
+                            width="15"
+                            style={{ margin: "5px" }}
+                            alt="edit"
+                        />
                     </EditOption>
                     <DetailOption>
                         <DetailWrapper>
@@ -128,5 +144,6 @@ export const DetailConfirmation = props => {
         </>
     );
 };
+
 
 export default DetailConfirmation;

@@ -27,6 +27,10 @@ const Home = () => {
         <li>
           <Link to="/credit-line/details">Details of kyc</Link>
         </li>
+        <hr />
+        <li>
+          <Link to="/kycdetails"> New Kyc Page</Link>
+        </li>
 
       </ul>
     </div>

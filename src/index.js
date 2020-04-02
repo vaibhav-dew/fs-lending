@@ -10,7 +10,6 @@ import panVerificationReducer from "./containers/credit-line/pan-details/Reducer
 import personalDetails from "./containers/credit-line/PersonalDetails/Reducer"
 import { BrowserRouter as Router } from "react-router-dom";
 import { combineReducers } from 'redux'
-import { persistStore, persistReducer } from 'redux-persist';
 
 
 const rootReducer = combineReducers({

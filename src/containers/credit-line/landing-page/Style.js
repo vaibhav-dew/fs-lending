@@ -69,3 +69,4 @@ export const StartedButton = styled.button`
         cursor: pointer;
         text-align: center;
   `;
+
