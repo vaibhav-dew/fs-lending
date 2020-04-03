@@ -10,13 +10,16 @@ import {
   PanValidation
 } from './Style'
 import PropTypes from 'prop-types'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { savePanDetails } from './Action'
 import axios from 'axios'
 import Loader from '../../../components/Loader/Loader'
 import Modal from '../../../components/Modal'
 
 const PanDetails = props => {
+  console.log(props)
+  const state = useSelector(state => state)
+  console.log(state)
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState({ exists: false, title: "", text: "" });
@@ -112,30 +115,33 @@ const PanDetails = props => {
 
   return (
     <>
-      <Navbar isExit title='Credit Line' route='/credit-line' />
-      <Container>
-        <Header>Confirm Limit</Header>
-        <StepHeader>Step 1 of 3</StepHeader>
-        <Details>Enter your PAN details</Details>
-        <Input
-          placeholder='PAN e.g. ALOPR0999R'
-          value={panNumber}
-          style={{ textTransform: 'uppercase' }}
-          onBlur={handlePanValidation}
-          onChange={handlePanNumber}
-          maxLength='10'
-        ></Input>
-        {isPanNumberValid ? '' : <PanValidation>Invalid Pan</PanValidation>}
-        <Input
-          placeholder='Full Name (as per PAN card )'
-          value={panName}
-          style={{ textTransform: 'capitalize' }}
-          onChange={e => setPanName(e.target.value)}
-        />
-        <Button disabled={!enabled} onClick={verifyPan}>
-          Verify
+      <div>
+        <Navbar isExit title='Credit Line' route='/credit-line' />
+        <Container>
+          <Header>Confirm Limit</Header>
+          <StepHeader>Step 1 of 3</StepHeader>
+          <Details>Enter your PAN details</Details>
+          <Input
+            placeholder='PAN e.g. ALOPR0999R'
+            value={panNumber}
+            style={{ textTransform: 'uppercase' }}
+            onBlur={handlePanValidation}
+            onChange={handlePanNumber}
+            maxLength='10'
+          ></Input>
+          {isPanNumberValid ? '' : <PanValidation>Invalid Pan</PanValidation>}
+          <Input
+            placeholder='Full Name (as per PAN card )'
+            value={panName}
+            style={{ textTransform: 'capitalize' }}
+            onChange={e => setPanName(e.target.value)}
+          />
+          <Button disabled={!enabled} onClick={verifyPan}>
+            Verify
         </Button>
-      </Container>
+        </Container>
+      </div>
+
     </>
   )
 }
