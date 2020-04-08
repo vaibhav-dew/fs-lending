@@ -1,12 +1,11 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 100%;
+  width: 360px;
   height: ${props => (props.value === 'document' ? '947px' : '760px')};
   -webkit-backdrop-filter: blur(2px);
   backdrop-filter: blur(2px);
   background-color: #1e1e1e;
-
 `
 export const Navbar = styled.div`
   width: 360px;
@@ -14,14 +13,17 @@ export const Navbar = styled.div`
   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.3);
   background-color: #171717;
 `
+export const NavbarHead = styled.div`
+  display:flex;
+`
 export const NavbarRoute = styled.h2`
- width: 24px;
+  width: 24px;
   height: 24px;
   color:white;
   margin:16px 0 0px 16px;
   `
-export const NavbarHead = styled.h1`
-width: 143px;
+export const NavbarHeadContent = styled.h1`
+  width: 143px;
   height: 24px;
   font-size: 20px;
   font-weight: 600;

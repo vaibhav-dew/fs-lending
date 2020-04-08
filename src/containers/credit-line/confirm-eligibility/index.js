@@ -13,12 +13,16 @@ import {
     DetailWrapper,
     EditOption
 } from "./style";
-import Navbar from "../../../components/confirm-navbar";
+import Navbar from "../../../components/Navbar/index";
 import Modal from '../../../components/Modal'
 import Axios from "axios";
 import Loader from '../../../components/Loader/Loader'
 import { useSelector } from "react-redux";
+import styled from "styled-components";
 
+const Blur = styled.div`
+    filter: blur(1px);
+`
 
 export const DetailConfirmation = props => {
     const state = useSelector(state => state)
@@ -26,12 +30,14 @@ export const DetailConfirmation = props => {
     const [modal, setModal] = useState(false);
     const [modalMsg, setModalMsg] = useState();
     const [isActive, setIsActive] = useState(false);
-    const panNumber = state.panVerificationReducer.panNumber;
-    const panName = state.panVerificationReducer.panName;
+    const panNumber = 'BJLPG1020R';
+    const panName = 'Harsh Kumar Gupta';
+    // const panNumber = state.panVerificationReducer.panNumber;
+    // const panName = state.panVerificationReducer.panName;
     const dob = "26 November 1994";
     const pincode = "244412";
     const employmentType = "Salaried";
-    const [isLoading, setIsLoading] = useState(false)
+    const [isLoading, setIsLoading] = useState(false);
 
     const confirmDetails = () => {
         setIsLoading(true)
@@ -92,7 +98,7 @@ export const DetailConfirmation = props => {
 
     return (
         <>
-            <Navbar title={'/'} isExit route="/credit-line"/>
+            <Navbar isExit route="/credit-line"></Navbar>
             <Container >
                 <Header>Confirm Limit</Header>
                 <Steps>Step 1 of 3</Steps>
@@ -139,7 +145,7 @@ export const DetailConfirmation = props => {
                     &nbsp;and authorise us to pull your bureau score from CIBIL
                 </Conditions>
                 <ConfirmButton onClick={confirmDetails}>Confirm Eligibility</ConfirmButton>
-                {modal ? <Modal closePopUp={termsClick} title={modalMsg} /> : ''}
+                {modal ? <Modal closePopUp={termsClick} title={modalMsg} ></Modal> : ''}
             </Container>
         </>
     );

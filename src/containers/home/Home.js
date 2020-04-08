@@ -34,6 +34,16 @@ const Home = () => {
         <li>
           <Link to='/credit-line/onboarding-form'>Onboarding Form</Link>
         </li>
+        <li>
+          <Link to="/limit"> New Limit Page</Link>
+        </li>
+        <li>
+          <Link to='/tatacapital'> Tata Capital Dummy </Link>
+        </li>
+        <hr />
+        <li>
+          <Link to='/testingcomponent'> Testing </Link>
+        </li>
       </ul>
     </div>
   );

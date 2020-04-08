@@ -4,7 +4,7 @@ import React, {
 import {
     InstructionContainer, Instructions, InstructionsHeader, InstructionContent,
     InstructionContentContainer, StepContent,
-    Steper
+    Steper,
 } from './style';
 import Logo from '../../../Assets/white.svg'
 

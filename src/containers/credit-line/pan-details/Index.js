@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Navbar from '../../../components/confirm-navbar'
+import Navbar from '../../../components/Navbar'
 import {
   Container,
   Header,
@@ -128,7 +128,7 @@ const PanDetails = props => {
             onBlur={handlePanValidation}
             onChange={handlePanNumber}
             maxLength='10'
-          />
+          ></Input>
           {isPanNumberValid ? '' : <PanValidation>Invalid Pan</PanValidation>}
           <Input
             placeholder='Full Name (as per PAN card )'
