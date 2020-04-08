@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const ErrorWrapper = styled.div`
   position: fixed;
@@ -11,11 +11,11 @@ export const ErrorWrapper = styled.div`
   width: 100%;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.4);
-`
+`;
 
 export const ErrorModal = styled.div`
   background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
+  margin: auto;
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
@@ -23,4 +23,4 @@ export const ErrorModal = styled.div`
   height: auto;
   color: black;
   text-align: center;
-`
+`;
