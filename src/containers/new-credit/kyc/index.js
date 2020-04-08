@@ -15,16 +15,11 @@ import {
     LinkContent,
     NavbarHeadContent
 } from './style'
+import PropTypes from 'prop-types'
 import Instructions from './Instructions.js';
 import Radio from './Radio';
-import Modal from '../../../components/Modal';
 import Axios from 'axios'
-const divStyle = {
-    // filter: 'blur(2px)'
-}
-
 const NewKyc = props => {
-    const [next, setNext] = useState(false)
     const [selectedTag, setselectedTag] = useState("");
     const handleOption = e => setselectedTag(e.target.value);
     const navbarRoute = () => props.history.push('/');
@@ -45,19 +40,14 @@ const NewKyc = props => {
                     if (response && response.request.status === 200) {
                         console.log('response', response)
                         console.log(response.data.token)
-                        if (response.data.token !== null) {
-                            props.history.push('/tatacapital',
-                                { selectedTag })
-                        } else {
-                            setNext(!next)
-                        }
+                        props.history.push('/tatacapital',
+                            { selectedTag })
                     } else {
-                        setNext(!next)
+                        console('token is null ')
                     }
                 })
                 .catch(err => {
                     if (err && err.response) {
-                        setNext(!next)
                         console.log(err)
                     }
                 })
@@ -66,12 +56,10 @@ const NewKyc = props => {
                 { selectedTag })
         )
     }
-    const handlePopup = () => {
-        setNext(!next)
-    }
+
     return (
         <>
-            <Container value={selectedTag} style={next ? divStyle : {}}>
+            <Container value={selectedTag}>
                 <Navbar>
                     <NavbarHead>
                         <NavbarRoute onClick={navbarRoute}>
@@ -115,10 +103,12 @@ const NewKyc = props => {
                 {selectedTag === 'document' ? <LinkContent style={{ margin: '57px 20px 0px 21px' }}>You will be redirected to Tata Capital website</LinkContent>
                     : ''}
                 {selectedTag ? <Button onClick={handleChange}><ButtonContent> Next</ButtonContent> </Button> : ''}
-                {next ? <Modal next={next} title={'Error'} closePopUp={handlePopup}></Modal> : ''}
             </Container>
         </>
     )
+}
+NewKyc.propTypes = {
+    selectedTag: PropTypes.string,
 }
 export default NewKyc
 

@@ -1,11 +1,21 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+    display: ${(props) => (props.show ? "block" : "none")};
     width: 359px;
     height: 772px;
     -webkit-backdrop-filter: blur(2px);
-    backdrop-filter: blur(2px);
+    position:fixed;
+    top:0;
     background-color: rgba(0, 0, 0, 0.56);
+    backdrop-filter: blur(2px);
+  /* justify-content: center;
+  width: 359px;
+  height: 772px;
+  background-color: rgba(0, 0, 0, 0.56);
+  position: fixed;
+  top: 0;
+  backdrop-filter: blur(2px); */
   `
 export const Content = styled.div`
   width: 360px;
@@ -66,7 +76,7 @@ export const ProceedButton = styled.button`
   outline:none;
 `
 export const ProceedButtonContent = styled.div`
-  width: 49px;
+  width: 100px;
   height: 14px;
   font-family: TTCommons;
   font-size: 14px;
@@ -77,7 +87,7 @@ export const ProceedButtonContent = styled.div`
   letter-spacing: normal;
   text-align: center;
   color: #1e1e1e;
-  margin:9px 137px;
+  margin:auto;
   `
 export const RedirectContent = styled.div`
 width: 300px;
