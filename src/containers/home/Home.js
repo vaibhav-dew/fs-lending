@@ -31,7 +31,9 @@ const Home = () => {
         <li>
           <Link to="/kycdetails"> New Kyc Page</Link>
         </li>
-
+        <li>
+          <Link to='/credit-line/onboarding-form'>Onboarding Form</Link>
+        </li>
       </ul>
     </div>
   );

@@ -1,6 +1,6 @@
 import {
     SAVE_PAN_DETAILS
-} from "/home/harshk/fs-lending/src/containers/credit-line/pan-details/Constants";
+} from "./Constants";
 
 
 /**

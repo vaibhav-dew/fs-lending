@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Navbar from '/home/harshk/fs-lending/src/components/navbar'
+import Navbar from '../../../components/confirm-navbar'
 import {
   Container,
   Header,
