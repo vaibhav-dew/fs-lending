@@ -17,19 +17,16 @@ import Instructions from "./Instructions";
 
 const KycDetails = () => {
   const [completeOption, setCompleteOption] = useState("");
-  const handleOption = e => {
-    console.log(e.target.value);
-    setCompleteOption(e.target.value);
-  };
+  const handleOption = e => setCompleteOption(e.target.value);
   return (
-    <React.Fragment>
+    <>
+      <Navbar isExit={true} title="Credit Line" route="/credit-line" />
+      <ConfirmNavbar
+        title="1. Confirm Eligibility"
+        route="/credit-line/details"
+      />
+      <Horizontal />
       <Container>
-        <Navbar isExit={true} title="Credit Line" route="/credit-line" />
-        <ConfirmNavbar
-          title="1. Confirm Eligibility"
-          route="/credit-line"
-        ></ConfirmNavbar>
-        <Horizontal />
         <Header>KYC</Header>
         <StepHeader>Step 2 of 3</StepHeader>
         <Details>Select how you would like to complete your KYC </Details>
@@ -40,7 +37,7 @@ const KycDetails = () => {
               name="value"
               value="aadhar"
               onChange={handleOption}
-            ></Option>
+            />
             <OptionValue>AADHAR (Instant)</OptionValue>
           </OptionWrapper>
           <OptionSubValue>
@@ -55,7 +52,7 @@ const KycDetails = () => {
               name="value"
               value="document"
               onChange={handleOption}
-            ></Option>
+            />
             <OptionValue>Document pick-up</OptionValue>
           </OptionWrapper>
           <OptionSubValue>
@@ -64,7 +61,7 @@ const KycDetails = () => {
         </OptionContainer>
         {completeOption ? <Instructions value={completeOption} /> : ""}
       </Container>
-    </React.Fragment>
+    </>
   );
 };
 export default KycDetails;

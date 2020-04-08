@@ -2,9 +2,9 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   margin: auto;
-  font-style: sans-serif;
   display: block;
   width:90%;
+  height:100vh;
 `
 export const Header = styled.h2`
   margin: 25px 0 10px 0;
