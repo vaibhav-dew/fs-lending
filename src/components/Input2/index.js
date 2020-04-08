@@ -24,6 +24,8 @@ const Input = ({
   hint,
   maxWidth,
   fullWidth,
+  isError,
+  errorHint,
   ...props
 }) => {
   return (
@@ -43,13 +45,16 @@ const Input = ({
           onChange={onChange}
           fullWidth={fullWidth}
           maxWidth={maxWidth}
+          error={isError}
           {...props}
         />
-        {startAdornment && <Adornment adornment={endAdornment} />}
+        {endAdornment && <Adornment adornment={endAdornment} />}
       </div>
       {showHint && (
         <InputHint>
-          <InputHintText>{hint}</InputHintText>
+          <InputHintText error={isError}>
+            {isError ? errorHint : hint}
+          </InputHintText>
         </InputHint>
       )}
     </InputWrapper>
@@ -70,6 +75,8 @@ Input.propTypes = {
   showHint: PropTypes.bool,
   endAdornment: PropTypes.object,
   fullWidth: PropTypes.bool,
+  isError: PropTypes.bool,
+  errorHint: PropTypes.string,
 };
 
 Input.defaultProps = {

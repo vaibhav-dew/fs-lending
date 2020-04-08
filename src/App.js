@@ -8,6 +8,7 @@ import KycDetails from "./containers/credit-line/Kyc-details/KycDetails";
 import { DetailConfirmation } from "./containers/credit-line/confirm-eligibility/index";
 import PersonalDetails from "./containers/credit-line/PersonalDetails";
 import ActivateLimit from "./containers/credit-line/ActivateLimit";
+import OnboardingForm from "./containers/credit-line/OnboardingForm";
 
 const App = () => {
   return (
@@ -32,6 +33,7 @@ const App = () => {
           component={PersonalDetails}
         />
         <Route path="/credit-line/activate-limit" component={ActivateLimit} />
+        <Route path="/credit-line/onboarding-form" component={OnboardingForm} />
       </Switch>
     </Router>
   );

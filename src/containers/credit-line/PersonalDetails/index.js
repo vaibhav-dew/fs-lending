@@ -10,40 +10,27 @@ import Navbar from "../../../components/Navbar";
 import EmploymentBlock from "./EmploymentBlock";
 import { saveGeolocation } from "./Actions";
 
-const PersonalDetails = props => {
+const PersonalDetails = (props) => {
   const [geoLocation, setGeoLocation] = useState({});
   const [error, setError] = useState({ exists: false, title: "", text: "" });
   const [proceed, setProceed] = useState(false);
-  const setLocationFromPosition = position => {
+  const setLocationFromPosition = (position) => {
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
     setGeoLocation({ latitude, longitude });
     props.saveGeolocation(geoLocation);
   };
-  const handleGeoLocationError = err => {
+  const handleGeoLocationError = (err) => {
     if (err.code === 1) {
       setError({
         exists: true,
         title: "Location Access Denied",
         text:
-          "Dear user, your location is required for the credit line. Please allow access to your location."
+          "Dear user, your location is required for the credit line. Please allow access to your location.",
       });
     }
   };
-  const getGPSLocation = () => {
-    if (navigator.geolocation)
-      navigator.geolocation.getCurrentPosition(
-        setLocationFromPosition,
-        handleGeoLocationError
-      );
-    else
-      setError({
-        exists: true,
-        title: "Location Not Supported!",
-        text: "Geolocation is not supported in this device!"
-      });
-  };
-  const validatePesonalDetails = personalDetails => {
+  const validatePesonalDetails = (personalDetails) => {
     if (!personalDetails.geoLocation && personalDetails.geoLocation === {})
       return false;
     if (!personalDetails.dateOfBirth) return false;
@@ -53,13 +40,24 @@ const PersonalDetails = props => {
     return true;
   };
   useEffect(() => {
-    getGPSLocation();
-  }, [JSON.stringify(geoLocation)]);
+    if (navigator.geolocation)
+      navigator.geolocation.getCurrentPosition(
+        setLocationFromPosition,
+        handleGeoLocationError
+      );
+    else
+      setError({
+        exists: true,
+        title: "Location Not Supported!",
+        text: "Geolocation is not supported in this device!",
+      });
+    // eslint-disable-next-line
+  }, [geoLocation]);
   useEffect(() => {
     console.log("props", props.personalDetails);
     if (validatePesonalDetails(props.personalDetails)) setProceed(true);
     else setProceed(false);
-  }, [JSON.stringify(props.personalDetails)]);
+  }, [props.personalDetails]);
   return (
     <PersonalDetailsWrapper>
       {error.exists && (
@@ -77,20 +75,20 @@ const PersonalDetails = props => {
 
 PersonalDetails.propTypes = {
   saveGeolocation: PropTypes.func.isRequired,
-  personalDetails: PropTypes.object.isRequired
+  personalDetails: PropTypes.object.isRequired,
 };
 
 PersonalDetails.defaultProps = {
   saveGeolocation,
-  personalDetails: {}
+  personalDetails: {},
 };
 
-const mapStateToProps = state => ({
-  personalDetails: state.lending.personalDetails
+const mapStateToProps = (state) => ({
+  personalDetails: state.personalDetails,
 });
 
-const mapDispatchToProps = dispatch => ({
-  saveGeolocation: location => saveGeolocation(location)
+const mapDispatchToProps = (dispatch) => ({
+  saveGeolocation: (location) => dispatch(saveGeolocation(location)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PersonalDetails);

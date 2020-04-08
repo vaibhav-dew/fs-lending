@@ -1,25 +1,22 @@
 import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
 import styled from "styled-components";
-import { connect } from "react-redux";
 import {
-  EMPLOYMENT_TYPE_SELF_EMPLOYED,
   EMPLOYMENT_TYPE_SALARIED,
+  EMPLOYMENT_TYPE_SELF_EMPLOYED,
 } from "./Constants";
+import { FlexibleItem, FlexibleContainer } from "./style";
+import { connect } from "react-redux";
 import { saveEmploymentType } from "./Actions";
 
-const RadioBlock = styled.div`
-  padding: 5px;
-  display: flex;
-`;
-const RadioOption = styled.div`
-  flex: 1;
-`;
 const RadioButton = styled.input`
   margin-right: 5px;
 `;
 
-const EmploymentBlock = (props) => {
+const RadioLabel = styled.label`
+  color: white;
+`;
+
+const EmploymentDetails = (props) => {
   const [employmentType, setEmploymentType] = useState(null);
   const toggle = (e) => {
     setEmploymentType(e.target.value);
@@ -29,9 +26,9 @@ const EmploymentBlock = (props) => {
   }, [employmentType, props]);
   return (
     <div>
-      Employment Type
-      <RadioBlock>
-        <RadioOption>
+      <div style={{ color: "#999", padding: 5 }}>Employment Type</div>
+      <FlexibleContainer>
+        <FlexibleItem>
           <RadioButton
             id="salaried"
             type="radio"
@@ -39,9 +36,9 @@ const EmploymentBlock = (props) => {
             value={EMPLOYMENT_TYPE_SALARIED}
             onClick={toggle}
           />
-          <label htmlFor="salaried">Salaried</label>
-        </RadioOption>
-        <RadioOption>
+          <RadioLabel htmlFor="salaried">Salaried</RadioLabel>
+        </FlexibleItem>
+        <FlexibleItem>
           <RadioButton
             id="selfEmployed"
             type="radio"
@@ -49,19 +46,11 @@ const EmploymentBlock = (props) => {
             value={EMPLOYMENT_TYPE_SELF_EMPLOYED}
             onClick={toggle}
           />
-          <label htmlFor="selfEmployed">Self Employed</label>
-        </RadioOption>
-      </RadioBlock>
+          <RadioLabel htmlFor="selfEmployed">Self Employed</RadioLabel>
+        </FlexibleItem>
+      </FlexibleContainer>
     </div>
   );
-};
-
-EmploymentBlock.propTypes = {
-  saveEmploymentType: PropTypes.func.isRequired,
-};
-
-EmploymentBlock.defaultProps = {
-  saveEmploymentType,
 };
 
 const mapDispatchToProps = (dispatch) => ({
@@ -69,4 +58,4 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(saveEmploymentType(employmentType)),
 });
 
-export default connect(null, mapDispatchToProps)(EmploymentBlock);
+export default connect(null, mapDispatchToProps)(EmploymentDetails);
