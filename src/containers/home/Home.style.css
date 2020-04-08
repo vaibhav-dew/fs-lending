@@ -1,0 +1,13 @@
+.module-links > li {
+  margin: 10px auto;
+  color: #fff;
+}
+
+.module-links a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.module-links a:hover {
+  text-decoration: underline;
+}
