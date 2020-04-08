@@ -4,10 +4,13 @@ import {
   ErrorModal,
   ErrorWrapper,
 } from './style'
-
-const Modal = ({ title, text, closePopUp }) => {
+const popup = {
+  visibility: 'visible',
+  opacity: '1'
+}
+const Modal = ({ title, text, closePopUp, next }) => {
   return (
-    <ErrorWrapper id='myModal'>
+    <ErrorWrapper id='myModal' style={next ? popup : {}}>
       <ErrorModal>
         <h3>{title}</h3>
         <p>{text}</p>
