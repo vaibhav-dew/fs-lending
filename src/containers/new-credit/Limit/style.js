@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
     display: ${(props) => (props.show ? "block" : "none")};
-    width: 359px;
+    width: 380px;
     height: 772px;
     -webkit-backdrop-filter: blur(2px);
     position:fixed;
@@ -18,7 +18,7 @@ export const Container = styled.div`
   backdrop-filter: blur(2px); */
   `
 export const Content = styled.div`
-  width: 360px;
+  width: 380px;
   height: 522px;
   border-radius: 8px;
   background-color: #1e1e1e;
