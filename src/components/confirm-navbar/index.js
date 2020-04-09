@@ -5,13 +5,12 @@ import { useHistory } from "react-router-dom";
 
 
 const ConfirmNavbar = props => {
-  console.log("NavConfirmation props: ", props);
   const history = useHistory();
   const icon = "https://image.flaticon.com/icons/svg/446/446191.svg";
   return (
     <>
       <Container>
-        <img width="20" src={icon} alt={icon} />
+        <img width="20" src={icon} alt='completed' />
         <Title>{props.title}</Title>
         <DetailsButton onClick={() => history.push(props.route)}>
           Details

@@ -1,12 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { ErrorModal, ErrorWrapper } from './style'
+import {
+  ErrorModal,
+  ErrorTitle,
+  ErrorWrapper,
+  CloseModal,
+  CloseBtn
+} from './style'
 
 const Error = ({ title, text, show }) => {
   if (!show) return null
   else
     return (
-      <ErrorWrapper>
+      <ErrorWrapper id='myModal'>
         <ErrorModal>
           <h3>{title}</h3>
           <p>{text}</p>

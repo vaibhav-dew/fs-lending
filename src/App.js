@@ -9,6 +9,10 @@ import { DetailConfirmation } from "./containers/credit-line/confirm-eligibility
 import PersonalDetails from "./containers/credit-line/PersonalDetails";
 import ActivateLimit from "./containers/credit-line/ActivateLimit";
 import OnboardingForm from "./containers/credit-line/OnboardingForm";
+import NewKyc from "./containers/new-credit/kyc";
+import Limit from "./containers/new-credit/Limit";
+import TestingComponent from './TestingPratice/index'
+import Tata from "./containers/new-credit/dummy-tata-capital";
 
 const App = () => {
   return (
@@ -34,6 +38,22 @@ const App = () => {
         />
         <Route path="/credit-line/activate-limit" component={ActivateLimit} />
         <Route path="/credit-line/onboarding-form" component={OnboardingForm} />
+        <Route
+          path="/kycdetails"
+          component={NewKyc}
+        />
+        <Route
+          path="/limit"
+          component={Limit}
+        />
+        <Route
+          path='/testingcomponent'
+          component={TestingComponent}
+        />
+        <Route
+          path='/tatacapital'
+          component={Tata}
+        />
       </Switch>
     </Router>
   );
