@@ -20,8 +20,8 @@ const Limit = (props) => {
     // const kycreq = props.kycreq;
     // const refid = props.refid;
     // const message = props.message;
-    const limit = 15000;
-    const kycreq = 'N';
+    const limit = props.limit;
+    const kycreq = props.kycreq;
     const handleKyc = () => {
         if (kycreq === 'Y') {
             props.props.history.push('/kycdetails')
@@ -79,8 +79,8 @@ const Limit = (props) => {
 }
 
 Limit.propTypes = {
-    limit: PropTypes.string,
-    kycreq: PropTypes.string,
+    limit: PropTypes.string.isRequired,
+    kycreq: PropTypes.string.isRequired,
 }
 
 export default Limit
