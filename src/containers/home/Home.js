@@ -32,20 +32,17 @@ const Home = () => {
           <Link to="/kycdetails"> New Kyc Page</Link>
         </li>
         <li>
-          <Link to='/credit-line/onboarding-form'>Onboarding Form</Link>
+          <Link to="/credit-line/onboarding-form">Onboarding Form</Link>
         </li>
         <li>
           <Link to="/limit"> New Limit Page</Link>
         </li>
         <li>
-          <Link to='/tatacapital'> Tata Capital Dummy </Link>
+          <Link to="/tatacapital"> Tata Capital Dummy</Link>
         </li>
         <hr />
         <li>
-          <Link to="/credit-line/onboarding-form">Onboarding Form</Link>
-        </li>
-        <li>
-          <Link to='/testingcomponent'> Testing </Link>
+          <Link to="/testingcomponent"> Testing </Link>
         </li>
       </ul>
     </div>
