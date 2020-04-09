@@ -7,9 +7,7 @@ import {
     Value,
     ProceedButton,
     ProceedButtonContent,
-    RedirectContent,
-    IncreaseLimitContent,
-    IncreaseLimtButtonContent,
+    RedirectContent
 } from './style';
 import PropTypes from 'prop-types'
 import Logo from '../../../Assets/purple.svg'
@@ -23,7 +21,7 @@ const Limit = (props) => {
     // const refid = props.refid;
     // const message = props.message;
     const limit = 15000;
-    const kycreq = 'Y';
+    const kycreq = 'N';
     const handleKyc = () => {
         if (kycreq === 'Y') {
             props.props.history.push('/kycdetails')
@@ -73,14 +71,8 @@ const Limit = (props) => {
                     <ProceedButtonContent onClick={handleKyc}>{kycreq === 'Y' ? 'Proceed' : 'Activate Limit'}</ProceedButtonContent>
                 </ProceedButton>
                 <RedirectContent>
-                    {kycreq === 'Y' ? 'You will be redirected to the Tata Capital website for KYC' : 'Activate Limit'}
+                    {kycreq === 'Y' ? 'You will be redirected to the Tata Capital website for KYC' : ''}
                 </RedirectContent>
-                <IncreaseLimitContent>
-                    You can also increase your limit
-                </IncreaseLimitContent>
-                <ProceedButton style={{ backgroundColor: '#1e1e1e', margin: '16px 18px 35px 18px' }}>
-                    <IncreaseLimtButtonContent>Increase Limit</IncreaseLimtButtonContent>
-                </ProceedButton>
             </Content>
         </Container>
     )

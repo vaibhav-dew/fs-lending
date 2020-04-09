@@ -19,7 +19,7 @@ export const Container = styled.div`
   `
 export const Content = styled.div`
   width: 380px;
-  height: 522px;
+  height: 400px;
   border-radius: 8px;
   background-color: #1e1e1e;
   z-index:2;
@@ -102,37 +102,4 @@ width: 300px;
   text-align: center;
   color: #ffffff;
   margin: 24px 36px 0 24px;
-`
-export const IncreaseLimitContent = styled.div`
-width: 296px;
-  height: 24px;
-  font-family: TTCommons;
-  font-size: 20px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.2;
-  letter-spacing: normal;
-  text-align: center;
-  color: #ffffff;
-  margin: 48px 32px 0 32px;
-  `
-export const IncreaseLimitButton = styled.button`
-  width: 324px;
-  height: 40px;
-  border-radius: 20px;
-  border: solid 2px #ffffff;
-  `
-export const IncreaseLimtButtonContent = styled.div`
-  height: 40px;
-  font-family: TTCommons;
-  font-size: 16px;
-  font-weight: 600;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.25;
-  letter-spacing: normal;
-  text-align: center;
-  color: #ffffff;
-  margin-top:9px;
 `
