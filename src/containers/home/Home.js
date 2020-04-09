@@ -26,7 +26,7 @@ const Home = () => {
           <Link to="/credit-line/activate-limit">Activate Limit</Link>
         </li>
         <li>
-          <Link to="/credit-line/onboarding-form">Onboarding</Link>
+          <Link to="/credit-line/onboarding-form">Onboarding Form</Link>
         </li>
       </ul>
     </div>
