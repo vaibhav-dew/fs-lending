@@ -1,6 +1,6 @@
 import {
-    SAVE_PAN_DETAILS,
-} from './Constants';
+    SAVE_PAN_DETAILS
+} from "./Constants";
 
 
 /**

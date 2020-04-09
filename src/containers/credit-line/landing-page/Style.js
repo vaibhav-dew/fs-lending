@@ -1,20 +1,19 @@
 import styled from 'styled-components';
 
-export const LPContainer = styled.div `
-        font-family:sans-serif;
+export const LPContainer = styled.div`
         margin:0;
     `;
-export const Header = styled.h2 `
+export const Header = styled.h2`
         margin: 25px 0 25px;
         font-size: 20px;
         text-align:center;
     `;
-export const Steps = styled.h2 `
+export const Steps = styled.h2`
         margin: 0 0 1px;
         font-size: 18px;
         font-weight: normal;
     `;
-export const StepWrapper = styled.div `
+export const StepWrapper = styled.div`
        padding:0 0 15px 70px;
        position: relative;
        &:after{
@@ -24,10 +23,10 @@ export const StepWrapper = styled.div `
         height: ${props => (props.disabled ? '0' : '100%')};
         top:26px;
         width:1px;
-        background:#ccc;
+        background-color:#ccc;
        }
     `;
-export const Steper = styled.div `
+export const Steper = styled.div`
         margin-left:25px;
         display:block;
         position: absolute;
@@ -36,29 +35,29 @@ export const Steper = styled.div `
         width:25px;
         height:25px;
         border-radius:50%;
-        background:#fff;
+        background-color:#fff;
         border:1px solid #ccc;
         color:#333;
         line-height:25px;
         text-align:center;
     `;
-export const WrapperConditions = styled.p `
+export const WrapperConditions = styled.p`
         margin: 0;
         font-size: 15px;
         color: #333;
         opacity: 0.5;
     `;
-export const List = styled.ul `
+export const List = styled.ul`
 margin-top:-10px;
 padding: 0px 20px;
 background-color: #fff;
 `;
 
-export const ListItem = styled.li `
+export const ListItem = styled.li`
 padding: 5px 0px;
 margin:0 0 5px 30px;
 `;
-export const StartedButton = styled.button `
+export const StartedButton = styled.button`
         outline:none;
         display: block;
         border:none;
@@ -70,3 +69,4 @@ export const StartedButton = styled.button `
         cursor: pointer;
         text-align: center;
   `;
+
