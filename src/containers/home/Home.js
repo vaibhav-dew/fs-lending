@@ -42,6 +42,9 @@ const Home = () => {
         </li>
         <hr />
         <li>
+          <Link to="/credit-line/onboarding-form">Onboarding Form</Link>
+        </li>
+        <li>
           <Link to='/testingcomponent'> Testing </Link>
         </li>
       </ul>
