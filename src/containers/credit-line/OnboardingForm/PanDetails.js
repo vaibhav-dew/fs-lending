@@ -11,8 +11,9 @@ const PanDetails = (props) => {
   useEffect(() => {
     setPanError({ exist: false, msg: "" });
     if (
-      pan.length === 10 &&
-      !pan.match("^([a-zA-Z]){5}([0-9]){4}([a-zA-Z]){1}?$")
+      pan.length > 10 ||
+      (pan.length === 10 &&
+        !pan.match("^([a-zA-Z]){5}([0-9]){4}([a-zA-Z]){1}?$"))
     )
       setPanError({ exist: true, msg: "PAN is invalid!" });
     else if (pan.length > 0 && name.length > 0) {
