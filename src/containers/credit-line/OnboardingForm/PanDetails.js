@@ -7,18 +7,18 @@ import { savePanDetails } from "./Actions";
 const PanDetails = (props) => {
   const [panDetails, setPanDetails] = useState({ pan: "", name: "" });
   const [panError, setPanError] = useState({ exist: false, msg: "" });
+  const { pan, name } = panDetails;
   useEffect(() => {
-    const pan = panDetails.pan;
     setPanError({ exist: false, msg: "" });
-    if (pan && pan.length === 10) {
-      if (pan.match("^([a-zA-Z]){5}([0-9]){4}([a-zA-Z]){1}?$")) {
-        setPanDetails({ ...panDetails, pan });
-        if (panDetails.name && panDetails.name.length > 0) {
-          props.savePanDetails(panDetails);
-        }
-      } else setPanError({ exist: true, msg: "Entered PAN is invalid!" });
+    if (
+      pan.length === 10 &&
+      !pan.match("^([a-zA-Z]){5}([0-9]){4}([a-zA-Z]){1}?$")
+    )
+      setPanError({ exist: true, msg: "PAN is invalid!" });
+    else if (pan.length > 0 && name.length > 0) {
+      props.savePanDetails({ pan, name });
     }
-  }, [panDetails, props]);
+  }, [pan, name, props]);
   const onChangeHandler = (e) => {
     setPanDetails({ ...panDetails, [e.target.name]: e.target.value });
   };
@@ -32,6 +32,8 @@ const PanDetails = (props) => {
           onChange={onChangeHandler}
           name={"pan"}
           label={"PAN"}
+          isError={panError.exist}
+          errorHint={panError.msg}
           fullWidth
         />
       </FlexibleItem>
@@ -42,8 +44,6 @@ const PanDetails = (props) => {
           onChange={onChangeHandler}
           label={"Full Name"}
           name={"name"}
-          isError={panError.exist}
-          errorHint={panError.msg}
           fullWidth
         />
       </FlexibleItem>
