@@ -18,11 +18,7 @@ import Modal from '../../../components/Modal'
 import Axios from "axios";
 import Loader from '../../../components/Loader/Loader'
 import { useSelector } from "react-redux";
-import styled from "styled-components";
 
-const Blur = styled.div`
-    filter: blur(1px);
-`
 
 export const DetailConfirmation = props => {
     const state = useSelector(state => state)
