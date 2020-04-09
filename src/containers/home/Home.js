@@ -1,11 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./Home.style.css";
 
 const Home = () => {
   return (
     <div>
       Home
-      <ul>
+      <ul className="module-links">
         <li>
           <Link to="/credit-line">Credit Line</Link>
         </li>
