@@ -25,7 +25,7 @@ const EmploymentDetails = (props) => {
     props.saveEmploymentType(employmentType);
   }, [employmentType, props]);
   return (
-    <div>
+    <div style={{ maxWidth: 400 }}>
       <div style={{ color: "#999", padding: 5 }}>Employment Type</div>
       <FlexibleContainer>
         <FlexibleItem>
