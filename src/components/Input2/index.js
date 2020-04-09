@@ -50,7 +50,7 @@ const Input = ({
         />
         {endAdornment && <Adornment adornment={endAdornment} />}
       </div>
-      {showHint && (
+      {(showHint || isError) && (
         <InputHint>
           <InputHintText error={isError}>
             {isError ? errorHint : hint}
