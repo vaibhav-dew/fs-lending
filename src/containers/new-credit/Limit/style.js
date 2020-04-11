@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    display: ${(props) => (props.show ? "block" : "none")};
+    /* display: ${(props) => (props.show ? "block" : "none")}; */
     width: 380px;
     height: 772px;
     -webkit-backdrop-filter: blur(2px);

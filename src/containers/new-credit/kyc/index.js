@@ -1,10 +1,6 @@
 import React, { useState } from 'react'
 import {
     Container,
-    Navbar,
-    NavbarRoute,
-    NavbarHead,
-    NavbarSubHead,
     ContentHead,
     ContentSubHead,
     OptionContainer,
@@ -13,16 +9,15 @@ import {
     Button,
     ButtonContent,
     LinkContent,
-    NavbarHeadContent
 } from './style'
 import PropTypes from 'prop-types'
 import Instructions from './Instructions.js';
 import Radio from './Radio';
 import Axios from 'axios'
+import NewNavbar from '../new-navbar';
 const NewKyc = props => {
     const [selectedTag, setselectedTag] = useState("");
     const handleOption = e => setselectedTag(e.target.value);
-    const navbarRoute = () => props.history.push('/');
     const handleChange = () => {
         if (selectedTag === 'aadhar') {
             const head = {
@@ -60,18 +55,7 @@ const NewKyc = props => {
     return (
         <>
             <Container value={selectedTag}>
-                <Navbar>
-                    <NavbarHead>
-                        <NavbarRoute onClick={navbarRoute}>
-                            {/* <img style={{}} */}
-                            <div style={{ height: '16px', width: '10px', margin: '4px 7px 4px 7px' }}>
-                                &lt;
-                            </div>
-                        </NavbarRoute>
-                        <NavbarHeadContent>Tata Credit Line</NavbarHeadContent>
-                    </NavbarHead>
-                    <NavbarSubHead>Step 2/3</NavbarSubHead>
-                </Navbar>
+                <NewNavbar />
                 <ContentHead>
                     COMPLETE YOUR KYC
                 </ContentHead>
