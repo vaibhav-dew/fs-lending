@@ -11,9 +11,6 @@ import Logo from '../../../../Assets/purple.svg'
 import PropTypes from 'prop-types'
 
 const Popup = (props) => {
-    const handlePopup = () => {
-        props.setShowError(!props.showError)
-    }
     console.log(props.showError)
     if (!props.showError) return null;
     else
@@ -32,7 +29,7 @@ const Popup = (props) => {
                         Initiate again
                 </PopupDetail>
                     <PopupButton>
-                        <PopupButtonContent onClick={handlePopup}>OK</PopupButtonContent>
+                        <PopupButtonContent onClick={() => props.setShowError()}>OK</PopupButtonContent>
                     </PopupButton>
                 </Content>
             </Container>
@@ -40,7 +37,9 @@ const Popup = (props) => {
 }
 
 Popup.propTypes = {
-    showError: PropTypes.string.isRequired,
-    setShowError: PropTypes.string.isRequired
+    showError: PropTypes.bool.isRequired,
+}
+Popup.defaultProps = {
+    showError: false,
 }
 export default Popup;

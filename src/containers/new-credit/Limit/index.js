@@ -24,7 +24,7 @@ const Limit = (props) => {
     // const limit = props.limit;
     // const kycreq = props.kycreq;
     const limit = '15000';
-    const kycreq = 'Y';
+    const kycreq = 'z';
     const [error, setError] = useState(false)
     const handleKyc = () => {
         if (kycreq === 'Y') {
