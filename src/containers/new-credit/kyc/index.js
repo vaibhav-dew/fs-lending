@@ -15,8 +15,10 @@ import Instructions from './Instructions.js';
 import Radio from './Radio';
 import Axios from 'axios'
 import NewNavbar from '../Common/new-navbar';
+import Popup from '../Common/Popup';
 const NewKyc = props => {
     const [selectedTag, setselectedTag] = useState("");
+    const [error, setError] = useState(false)
     const handleOption = e => setselectedTag(e.target.value);
     const handleChange = () => {
         if (selectedTag === 'aadhar') {
@@ -39,6 +41,7 @@ const NewKyc = props => {
                             { selectedTag })
                     } else {
                         console('token is null ')
+                        setError(!error)
                     }
                 })
                 .catch(err => {
@@ -87,6 +90,7 @@ const NewKyc = props => {
                 {selectedTag === 'document' ? <LinkContent style={{ margin: '57px 20px 0px 21px' }}>You will be redirected to Tata Capital website</LinkContent>
                     : ''}
                 {selectedTag ? <Button onClick={handleChange}><ButtonContent> Next</ButtonContent> </Button> : ''}
+                <Popup showError={error} setShowError={setError} />
             </Container>
         </>
     )
