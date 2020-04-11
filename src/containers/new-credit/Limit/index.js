@@ -12,7 +12,7 @@ import {
 import PropTypes from 'prop-types'
 import Logo from '../../../Assets/purple.svg'
 import Axios from 'axios';
-import Popup from '../Popup';
+import Popup from '../Common/Popup';
 
 const Limit = (props) => {
     // const [limit, setLimit] = useState('15000');

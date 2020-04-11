@@ -12,7 +12,7 @@ import OnboardingForm from "./containers/credit-line/OnboardingForm";
 import NewKyc from "./containers/new-credit/kyc";
 import Limit from "./containers/new-credit/Limit";
 import TestingComponent from './TestingPratice/index'
-import Tata from "./containers/new-credit/dummy-tata-capital";
+import Tata from "./containers/new-credit/Common/dummy-tata-capital";
 
 const App = () => {
   return (

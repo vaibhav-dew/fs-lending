@@ -7,7 +7,7 @@ import {
     PopupButton,
     PopupButtonContent
 } from './style';
-import Logo from '../../../Assets/purple.svg'
+import Logo from '../../../../Assets/purple.svg'
 import PropTypes from 'prop-types'
 
 const Popup = (props) => {

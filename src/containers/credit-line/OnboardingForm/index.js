@@ -7,7 +7,7 @@ import TermsAndConditions from "./TermsAndConditions";
 // import TCPNav from "../../../components/TCPNav";
 // Added by harsh
 import Limit from "../../new-credit/Limit";
-import NewNavbar from "../../new-credit/new-navbar";
+import NewNavbar from "../../new-credit/Common/new-navbar";
 // Added by harsh
 
 const OnboardingForm = (props) => {

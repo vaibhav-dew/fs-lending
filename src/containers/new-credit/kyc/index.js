@@ -14,7 +14,7 @@ import PropTypes from 'prop-types'
 import Instructions from './Instructions.js';
 import Radio from './Radio';
 import Axios from 'axios'
-import NewNavbar from '../new-navbar';
+import NewNavbar from '../Common/new-navbar';
 const NewKyc = props => {
     const [selectedTag, setselectedTag] = useState("");
     const handleOption = e => setselectedTag(e.target.value);
