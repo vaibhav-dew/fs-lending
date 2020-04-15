@@ -18,6 +18,11 @@ export const Content = styled.div`
   position:absolute;
   top:84px;
   `
+export const LimitImage = styled.img`
+margin: auto; 
+margin-top: 32px;
+display: block;
+`
 export const Header = styled.div`
   height: 22px;
   font-size: 18px;
@@ -31,7 +36,6 @@ export const Header = styled.div`
   margin-top:10px;
 `
 export const ValueHeader = styled.div`
-  /* width: 296px; */
   height: 28px;
   font-size: 24px;
   font-weight: 600;

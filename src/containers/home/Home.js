@@ -42,6 +42,10 @@ const Home = () => {
         </li>
         <hr />
         <li>
+          <Link to='/schemeselection'>Scheme Selection</Link>
+        </li>
+        <hr />
+        <li>
           <Link to="/testingcomponent"> Testing </Link>
         </li>
       </ul>

@@ -1,4 +1,5 @@
 import { REQUEST_LIMIT_DETAILS, RECEIVE_LIMIT_DETAILS, FAILURE_LIMIT_DETAILS } from "./Constants"
+import { TOGGLE_POPUP } from "../kyc/Constants"
 
 const defaultState = {
     loading: false,
@@ -25,6 +26,11 @@ const limit = (state = defaultState, action) => {
             return {
                 loading: false,
                 error: true
+            }
+        case TOGGLE_POPUP:
+            return {
+                ...state,
+                error: false
             }
         default:
             return state

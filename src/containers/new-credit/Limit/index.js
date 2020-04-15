@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
     Container,
     Content,
@@ -7,37 +7,38 @@ import {
     Value,
     ProceedButton,
     ProceedButtonContent,
-    RedirectContent
+    RedirectContent,
+    LimitImage
 } from './style';
 import PropTypes from 'prop-types'
-import Logo from '../../../Assets/purple.svg'
+import Tick from '../../../Assets/purple.svg'
 import Popup from '../Common/Popup';
 import { useDispatch, useSelector } from 'react-redux';
 import { limitDetails } from './ActionCreator';
+import { handle } from '../kyc/Actions';
 
 const Limit = (props) => {
     const state = useSelector(state => state)
     const dispatch = useDispatch()
     const limit = '15000';
     const kycreq = 'N';
-    const [error, setError] = useState(state.limit.error)
     const handleKyc = () => {
         if (kycreq === 'Y') {
             props.props.history.push('/kycdetails')
         } else if (kycreq === 'N') {
             dispatch(limitDetails(props))
-        } else {
-            setError(!error)
         }
+    }
+    const togglePopup = () => {
+        dispatch(handle())
     }
     if (!props.show) return null
     else return (
         <Container>
             <Content>
-                <img
-                    src={Logo}
-                    alt='completed'
-                    style={{ margin: 'auto', marginTop: '32px', display: 'block' }} />
+                <LimitImage
+                    src={Tick}
+                    alt='Tick' />
                 <Header>
                     Application successful!
                 </Header>
@@ -54,8 +55,8 @@ const Limit = (props) => {
                     {kycreq === 'Y' ? 'You will be redirected to the Tata Capital website for KYC' : ''}
                 </RedirectContent>
             </Content>
-            <Popup showError={error} setShowError={setError}></Popup>
-        </Container>
+            <Popup showError={state.limit.error} togglePopup={togglePopup} />
+        </Container >
     )
 }
 

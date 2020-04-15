@@ -13,7 +13,7 @@ import NewKyc from "./containers/new-credit/kyc";
 import Limit from "./containers/new-credit/Limit";
 import TestingComponent from './TestingPratice/index'
 import Tata from "./containers/new-credit/Common/dummy-tata-capital";
-
+import Scheme from './containers/Multitender/Scheme/index'
 const App = () => {
   return (
     <Router>
@@ -53,6 +53,10 @@ const App = () => {
         <Route
           path='/tatacapital'
           component={Tata}
+        />
+        <Route
+          path='/schemeselection'
+          component={Scheme}
         />
       </Switch>
     </Router>
