@@ -29,7 +29,7 @@ const Popup = (props) => {
                         Initiate again
                 </PopupDetail>
                     <PopupButton>
-                        <PopupButtonContent onClick={() => props.setShowError()}>OK</PopupButtonContent>
+                        <PopupButtonContent onClick={props.togglePopup}>OK</PopupButtonContent>
                     </PopupButton>
                 </Content>
             </Container>
