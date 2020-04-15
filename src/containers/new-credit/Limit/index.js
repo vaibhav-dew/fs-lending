@@ -11,48 +11,22 @@ import {
 } from './style';
 import PropTypes from 'prop-types'
 import Logo from '../../../Assets/purple.svg'
-import Axios from 'axios';
 import Popup from '../Common/Popup';
+import { useDispatch, useSelector } from 'react-redux';
+import { limitDetails } from './ActionCreator';
 
 const Limit = (props) => {
-    // const [limit, setLimit] = useState('15000');
-    // const limit = props.eligibilityamount;
-    // const mandatereq = props.mandatereq;
-    // const kycreq = props.kycreq;
-    // const refid = props.refid;
-    // const message = props.message;
-    // const limit = props.limit;
-    // const kycreq = props.kycreq;
+    const state = useSelector(state => state)
+    const dispatch = useDispatch()
     const limit = '15000';
-    const kycreq = 'z';
-    const [error, setError] = useState(false)
+    const kycreq = 'N';
+    const [error, setError] = useState(state.limit.error)
     const handleKyc = () => {
         if (kycreq === 'Y') {
             props.props.history.push('/kycdetails')
         } else if (kycreq === 'N') {
-            const head = {
-                headers: {
-                    'Content-Type': 'application/json',
-                }
-            }
-            const data = JSON.stringify({
-                "customerhash": "G876543",
-                "url": "string"
-            })
-            Axios
-                .post('http://52.183.135.123:8090/tatapay/lending/activate/limit', data, head)
-                .then(response => {
-                    if (response && response.request.status === 200) {
-                        console.log('response', response)
-                        props.props.history.push(response.data.url)
-                    }
-                })
-                .catch(err => {
-                    console.log(err)
-                    setError(!error)
-                })
+            dispatch(limitDetails(props))
         } else {
-            console.log('Did not get correct response for kycreq')
             setError(!error)
         }
     }
@@ -63,7 +37,7 @@ const Limit = (props) => {
                 <img
                     src={Logo}
                     alt='completed'
-                    style={{ margin: '32px auto 0 auto', display: 'block' }} />
+                    style={{ margin: 'auto', marginTop: '32px', display: 'block' }} />
                 <Header>
                     Application successful!
                 </Header>
@@ -85,9 +59,9 @@ const Limit = (props) => {
     )
 }
 
-// Limit.propTypes = {
-//     limit: PropTypes.string.isRequired,
-//     kycreq: PropTypes.string.isRequired,
-// }
+Limit.propTypes = {
+    limit: PropTypes.string.isRequired,
+    kycreq: PropTypes.string.isRequired,
+}
 
 export default Limit
