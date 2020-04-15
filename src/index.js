@@ -9,11 +9,13 @@ import panVerificationReducer from "./containers/credit-line/pan-details/Reducer
 import personalDetails from "./containers/credit-line/PersonalDetails/Reducer"
 import { BrowserRouter as Router } from "react-router-dom";
 import { combineReducers } from 'redux'
+import limit from './containers/new-credit/Limit/Reducer'
 
 
 const rootReducer = combineReducers({
   panVerificationReducer,
-  personalDetails
+  personalDetails,
+  limit
 })
 const store = createStore(
   rootReducer,
