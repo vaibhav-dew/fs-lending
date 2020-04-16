@@ -1,40 +1,40 @@
-import { REQUEST_LIMIT_DETAILS, RECEIVE_LIMIT_DETAILS, FAILURE_LIMIT_DETAILS } from "./Constants"
+import { REQUEST_ACTIVATE_LIMIT_DETAILS, RECEIVE_ACTIVATE_LIMIT_DETAILS, FAILURE_ACTIVATE_LIMIT_DETAILS } from "./Constants"
 import { TOGGLE_POPUP } from "../kyc/Constants"
 
 const defaultState = {
-    loading: false,
-    error: false,
+    isLoading: false,
+    isError: false,
     refid: '',
     url: ''
 }
 
-const limit = (state = defaultState, action) => {
+const activateLimitReducer = (state = defaultState, action) => {
     switch (action.type) {
-        case REQUEST_LIMIT_DETAILS:
+        case REQUEST_ACTIVATE_LIMIT_DETAILS:
             return {
                 ...state,
-                loading: true
+                isLoading: true
             }
-        case RECEIVE_LIMIT_DETAILS:
+        case RECEIVE_ACTIVATE_LIMIT_DETAILS:
             return {
                 ...state,
-                loading: false,
+                isLoading: false,
                 refid: action.payload.refid,
                 url: action.payload.url
             }
-        case FAILURE_LIMIT_DETAILS:
+        case FAILURE_ACTIVATE_LIMIT_DETAILS:
             return {
-                loading: false,
-                error: true
+                isLoading: false,
+                isError: true
             }
         case TOGGLE_POPUP:
             return {
                 ...state,
-                error: false
+                isError: false
             }
         default:
             return state
     }
 }
 
-export default limit;
+export default activateLimitReducer;

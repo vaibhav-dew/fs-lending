@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import MultitenderNavbar from '../common/Navbar/index';
 import { Container, LimitContent, LimitHead, LimitValue } from './style';
+import ProductList from './productList';
 
 const Scheme = (props) => {
     const [limit, setLimit] = useState('55000')
@@ -16,6 +17,7 @@ const Scheme = (props) => {
                         &#8377;{limit}
                     </LimitValue>
                 </LimitContent>
+                <ProductList />
             </Container>
 
         </>
