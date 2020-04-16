@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ProductListContainer, ProductContent, ProductCheck, ProductNameDetails, ProductName, ProductNameDesc, ProductPrice } from './style';
+import { ProductListContainer, ProductContent, ProductCheck, ProductNameDetails, ProductName, ProductNameDesc, ProductValue } from './style';
 
 const ProductList = (props) => {
     const productArray = [{
@@ -40,9 +40,9 @@ const ProductList = (props) => {
                                     ({prod.product.productDesc})
                                 </ProductNameDesc>
                             </ProductNameDetails>
-                            <ProductPrice>
+                            <ProductValue>
                                 &#8377;{prod.product.productPrice}
-                            </ProductPrice>
+                            </ProductValue>
                         </ProductContent>
                     </ProductListContainer>
                 ))
