@@ -11,9 +11,10 @@ export const activateLimitDetails = (props) => {
             }
         }
         const data = JSON.stringify({
-            "customerhash": "G76543",
+            "customerhash": "G876543",
             "url": "string"
         })
+
         Axios
             .post('http://52.183.135.123:8090/tatapay/lending/activate/limit', data, head)
             .then(response => {
