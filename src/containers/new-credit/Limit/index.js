@@ -14,8 +14,8 @@ import PropTypes from 'prop-types'
 import Tick from '../../../Assets/purple.svg'
 import Popup from '../Common/Popup';
 import { useDispatch, useSelector } from 'react-redux';
-import { limitDetails } from './ActionCreator';
-import { handle } from '../kyc/Actions';
+import { activateLimitDetails } from './ActionCreator';
+import { togglePopup } from './Actions';
 
 const Limit = (props) => {
     const state = useSelector(state => state)
@@ -26,11 +26,11 @@ const Limit = (props) => {
         if (kycreq === 'Y') {
             props.props.history.push('/kycdetails')
         } else if (kycreq === 'N') {
-            dispatch(limitDetails(props))
+            dispatch(activateLimitDetails(props))
         }
     }
-    const togglePopup = () => {
-        dispatch(handle())
+    const handlePopup = () => {
+        dispatch(togglePopup())
     }
     if (!props.show) return null
     else return (
@@ -55,7 +55,7 @@ const Limit = (props) => {
                     {kycreq === 'Y' ? 'You will be redirected to the Tata Capital website for KYC' : ''}
                 </RedirectContent>
             </Content>
-            <Popup showError={state.limit.error} togglePopup={togglePopup} />
+            <Popup showError={state.limit.isEerror} togglePopup={handlePopup} />
         </Container >
     )
 }
