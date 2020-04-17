@@ -15,16 +15,15 @@ export const activateLimitDetails = (props) => {
             "url": "string"
         })
 
-        Axios
+        return Axios
             .post('http://52.183.135.123:8090/tatapay/lending/activate/limit', data, head)
             .then(response => {
-                if (response && response.request.status === 200) {
-                    dispatch(receiveActivateLimitDetails(response.data))
-                    props.props.history.push(response.data.url)
-                }
+                dispatch(receiveActivateLimitDetails(response.data))
+                props.props.history.push(response.data.url)
+
             })
             .catch(err => {
-                dispatch(failActivateLimitDetails(err))
+                dispatch(failActivateLimitDetails(`Oops! We could not load the details`))
             })
     }
 }

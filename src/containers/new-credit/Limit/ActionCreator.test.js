@@ -12,15 +12,7 @@ import { activateLimitDetails } from './ActionCreator'
 jest.mock('axios')
 const middleware = [thunk]
 const mockStore = configureMockStore(middleware)
-const limitStore = {
-    limit: {
-        isError: false,
-        isLoading: false,
-        refid: '',
-        url: ''
-    }
-}
-const store = mockStore(limitStore)
+const store = mockStore({})
 
 beforeEach(() => {
     /** Clear mocks and actions before each test run */
@@ -35,8 +27,8 @@ describe('limit details ActionCreators', () => {
         const mockResponse = {
             response: {
                 data: {
-                    refid: '1234',
-                    url: 'test.com'
+                    refid: '2aa75562-c627-4721-9e65-1c4d2e1cfd1b',
+                    url: 'https://Tata.Digital.com/ReturnUrl'
                 }
             }
         }
@@ -49,13 +41,32 @@ describe('limit details ActionCreators', () => {
             },
             {
                 type: RECEIVE_ACTIVATE_LIMIT_DETAILS,
-                payload: mockResponse.data.offerDetailsResponse.offerDetailsList[0]
+                payload: mockResponse.data
             }
         ]
-        store.dispatch(activateLimitDetails()).then(() => {
+        store.dispatch(activateLimitDetails({})).then(() => {
             /** Assert */
             expect(store.getActions()).toEqual(expectedActions)
         })
     })
+    it('should dispatch FETCH_OFFER_DETAILS_BEGIN, FETCH_OFFER_DETAILS_FAILURE with `Oops! We could not load the offer details` message when fetching offer details', () => {
+        /* Arrange */
+        const error = {
+            message: 'Network Error'
+        }
+        axiosMock.post.mockImplementationOnce(() => Promise.reject(error))
 
+        /** Act */
+        const expectedActions = [
+            { type: REQUEST_ACTIVATE_LIMIT_DETAILS },
+            {
+                type: FAILURE_ACTIVATE_LIMIT_DETAILS,
+                payload: `Oops! We could not load the details`
+            }
+        ]
+        store.dispatch(activateLimitDetails({})).then(() => {
+            /** Assert */
+            expect(store.getActions()).toEqual(expectedActions)
+        })
+    })
 })
