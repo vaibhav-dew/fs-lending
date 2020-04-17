@@ -38,7 +38,6 @@ export const LimitHead = styled.div`
 export const LimitValue = styled.div`
   width: 100%;
   height: 32px;
-  font-family: TTCommons;
   font-size: 28px;
   font-weight: 600;
   font-stretch: normal;
@@ -80,7 +79,6 @@ display:block;
 export const ProductName = styled.p`
   width: 282px;
   height: 24px;
-  font-family: TTCommons;
   font-size: 16px;
   font-weight: 600;
   font-stretch: normal;
@@ -96,7 +94,6 @@ export const ProductName = styled.p`
   @media screen and (max-width: 500px) {
   width: 211px;
   height: 18px;
-  font-family: TTCommons;
   font-size: 16px;
   font-weight: 600;
   font-stretch: normal;
@@ -110,7 +107,6 @@ export const ProductName = styled.p`
 export const ProductNameDesc = styled.p`
   width: 156px;
   height: 20px;
-  font-family: TTCommons;
   font-size: 14px;
   font-weight: normal;
   font-stretch: normal;
@@ -125,7 +121,6 @@ export const ProductNameDesc = styled.p`
   @media screen and (max-width: 500px) {
   width: 159px;
   height: 20px;
-  font-family: TTCommons;
   font-size: 14px;
   font-weight: normal;
   font-stretch: normal;
@@ -155,7 +150,6 @@ export const ProductValue = styled.div`
   right:0;
   width: 48px;
   height: 22px;
-  font-family: TTCommons;
   font-size: 12px;
   font-weight: 600;
   font-stretch: normal;
@@ -167,3 +161,79 @@ export const ProductValue = styled.div`
   margin:8px 16px;
   }
   `
+
+export const EmiContainer = styled.div`
+   width: 464px;
+  height: 246px;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.04);
+  @media screen and (max-width: 500px) {
+  width:100%;
+  height: auto;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.04);
+  margin:0px 0 0 0 ;
+  }`
+export const EmiHead = styled.div`
+@media screen and (max-width: 500px) {
+  height: 24px;
+  font-size: 16px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  color: #ffffff;
+  padding: 7px 0 0 26px;
+  }`
+
+export const TableHeader = styled.div`
+@media screen and (max-width: 500px) {
+  display:flex;
+  }`
+
+
+export const TableHeaderData = styled.div`
+@media screen and (max-width: 500px) {
+  width: 55px;
+  height: 32px;
+  font-size: 12px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.33;
+  letter-spacing: normal;
+  text-align: center;
+  color: #8f8f8f;
+  margin-left:8px;
+  /* padding-left:36px; */
+  margin-top:10px;
+  }`
+
+export const TableRow = styled.div`
+@media screen and (max-width: 500px) {
+  height: 52px;
+  /* opacity: 0.04; */
+  border: solid 1px #ffffff;
+  background-color: rgba(30, 30, 30, 0.65);
+  display:flex;
+  }`
+
+export const TableRowData = styled.div`
+@media screen and (max-width: 500px) {
+  width: 50px;
+  height: 24px;
+  font-size: 14px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.71;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff;
+  margin: 14px 0 14px 0;
+  }`
+export const TableRowContent = styled.div`
+display:flex;
+margin:0px;
+`
