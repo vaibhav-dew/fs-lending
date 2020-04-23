@@ -1,25 +1,23 @@
-import activateLimitReducer from './Reducer'
+import kycReducer from './Reducer'
 import * as types from './Constants'
 
 const initialState = {
     isLoading: false,
     isError: false,
-    refid: '',
     url: ''
 }
 
 const data = {
-    refid: '1234',
     url: 'test.com'
 }
-describe('activate limit reducer', () => {
+describe('kyc reducer', () => {
     it('should retrun the initial state', () => {
-        expect(activateLimitReducer(undefined, {})).toEqual(initialState)
+        expect(kycReducer(undefined, {})).toEqual(initialState)
     })
-    it('should handle REQUEST_ACTIVATE_LIMIT_DATA', () => {
+    it('should handle REQUEST_DOCUMENT_DETAILS', () => {
         expect(
-            activateLimitReducer([], {
-                type: types.REQUEST_ACTIVATE_LIMIT_DETAILS
+            kycReducer([], {
+                type: types.REQUEST_DOCUMENT_DETAILS
             })
         ).toEqual({
             isLoading: true
@@ -27,21 +25,19 @@ describe('activate limit reducer', () => {
     })
     it('should handle RECEIVE_ACTIVATE_LIMIT_DATA', () => {
         expect(
-            activateLimitReducer([], {
-                type: types.RECEIVE_ACTIVATE_LIMIT_DETAILS,
+            kycReducer([], {
+                type: types.RECEIVE_DOCUMENT_DETAILS,
                 payload: data
             })
         ).toEqual({
             isLoading: false,
-            refid: data.refid,
             url: data.url
         })
     })
-
     it('should handle FAILURE_ACTIVATE_LIMIT_DATA', () => {
         expect(
-            activateLimitReducer([], {
-                type: types.FAILURE_ACTIVATE_LIMIT_DETAILS,
+            kycReducer([], {
+                type: types.FAILURE_DOCUMENT_DETAILS,
                 payload: data
             })
         ).toEqual({
@@ -51,7 +47,7 @@ describe('activate limit reducer', () => {
     })
     it('should handle TOGGLE_POPUP', () => {
         expect(
-            activateLimitReducer([], {
+            kycReducer([], {
                 type: types.TOGGLE_POPUP,
             })
         ).toEqual({

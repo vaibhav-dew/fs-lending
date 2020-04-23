@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
     Container,
     ContentHead,
@@ -16,24 +16,27 @@ import Radio from './Radio';
 import NewNavbar from '../Common/new-navbar';
 import Popup from '../Common/Popup';
 import { useDispatch, useSelector } from 'react-redux';
-import { aadharDetails, documentDetails } from './ActionCreator';
-import { handle } from './Actions';
+import { documentDetails } from './ActionCreator';
+import { togglePopup } from './Actions';
 const NewKyc = props => {
     const dispatch = useDispatch();
-    const state = useSelector(state => state)
-    console.log(state)
+    const kycDetailsReducer = useSelector(state => state.kycReducer)
     const [selectedTag, setselectedTag] = useState("");
-    // const [error, setError] = useState(state.kycReducer.error)
     const handleOption = e => setselectedTag(e.target.value);
+    useEffect(() => {
+        if (kycDetailsReducer.url !== '') {
+            props.history.push(kycDetailsReducer.url)
+        }
+    }, [kycDetailsReducer.url, props.history])
     const handleChange = () => {
         if (selectedTag === 'aadhar') {
-            dispatch(aadharDetails(props))
+            console.log('aadhar details')
         } else if (selectedTag === 'document') {
             dispatch(documentDetails(props))
         }
     }
-    const togglePopup = () => {
-        dispatch(handle())
+    const handlePopup = () => {
+        dispatch(togglePopup())
     }
     return (
         <>
@@ -41,39 +44,40 @@ const NewKyc = props => {
                 <NewNavbar />
                 <ContentHead>
                     COMPLETE YOUR KYC
-                </ContentHead>
+                    </ContentHead>
                 <ContentSubHead>
                     How would you like to proceed?
-                </ContentSubHead>
+                    </ContentSubHead>
                 <OptionContainer>
                     <Radio value='aadhar' onValueChange={handleOption} />
                     <OptionValue>
                         AADHAR
-                    </OptionValue>
+                        </OptionValue>
                 </OptionContainer>
                 <OptionSubValue>
                     Instant online verification
-                </OptionSubValue>
+                    </OptionSubValue>
                 {selectedTag === 'aadhar' ? <Instructions value={selectedTag} /> : ''}
                 <OptionContainer>
                     <Radio value='document' onValueChange={handleOption} />
                     <OptionValue>
                         Document PickUp
-                    </OptionValue>
+                        </OptionValue>
                 </OptionContainer>
                 <OptionSubValue>
                     Takes 24 hours
-                </OptionSubValue>
+                    </OptionSubValue>
                 {selectedTag === 'document' ? <Instructions value={selectedTag} /> : ''}
                 {selectedTag === 'aadhar' ? <LinkContent>You will be redirected to Aadhar website</LinkContent>
                     : ''}
                 {selectedTag === 'document' ? <LinkContent style={{ margin: '57px 20px 0px 21px' }}>You will be redirected to Tata Capital website</LinkContent>
                     : ''}
                 {selectedTag ? <Button onClick={handleChange}><ButtonContent> Next</ButtonContent> </Button> : ''}
-                <Popup showError={state.kycReducer.error} togglePopup={togglePopup} />
+                <Popup showError={kycDetailsReducer.isError} togglePopup={handlePopup} />
             </Container>
         </>
     )
+
 }
 NewKyc.propTypes = {
     selectedTag: PropTypes.string,

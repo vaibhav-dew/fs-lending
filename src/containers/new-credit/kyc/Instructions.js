@@ -7,6 +7,7 @@ import {
     Steper,
 } from './style';
 import Logo from '../../../Assets/white.svg'
+import PropTypes from 'prop-types'
 
 const AadharInstructions = (props) => {
     return (
@@ -122,5 +123,8 @@ const AadharInstructions = (props) => {
         </>
 
     );
+}
+AadharInstructions.propTypes = {
+    selectedTag: PropTypes.string,
 }
 export default AadharInstructions;

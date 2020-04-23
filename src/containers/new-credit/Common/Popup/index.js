@@ -11,7 +11,6 @@ import Logo from '../../../../Assets/purple.svg'
 import PropTypes from 'prop-types'
 
 const Popup = (props) => {
-    console.log(props.showError)
     if (!props.showError) return null;
     else
         return (
@@ -35,7 +34,6 @@ const Popup = (props) => {
             </Container>
         )
 }
-
 Popup.propTypes = {
     showError: PropTypes.bool.isRequired,
 }

@@ -2,11 +2,11 @@ import configureMockStore from 'redux-mock-store'
 import axiosMock from 'axios'
 import thunk from 'redux-thunk'
 import {
-    REQUEST_ACTIVATE_LIMIT_DETAILS,
-    RECEIVE_ACTIVATE_LIMIT_DETAILS,
-    FAILURE_ACTIVATE_LIMIT_DETAILS
+    REQUEST_DOCUMENT_DETAILS,
+    RECEIVE_DOCUMENT_DETAILS,
+    FAILURE_DOCUMENT_DETAILS
 } from './Constants'
-import { activateLimitDetails } from './ActionCreator'
+import { documentDetails } from './ActionCreator'
 
 /** Mocks */
 jest.mock('axios')
@@ -22,14 +22,12 @@ beforeEach(() => {
 })
 
 describe('limit details ActionCreators', () => {
-    it('should dispatch REQUEST_ACTIVATE_LIMIT_DETAILS ,RECEIVE_ACTIVATE_LIMIT_DETAILS,when fetching offer details', () => {
+    it('should dispatch when  REQUEST_DOCUMENT_DETAILS ,RECEIVE_DOCUMENT_DETAILS fetching  details', () => {
         /** Arrange */
         const mockResponse = {
-            response: {
-                data: {
-                    refid: '2aa75562-c627-4721-9e65-1c4d2e1cfd1b',
-                    url: 'https://Tata.Digital.com/ReturnUrl'
-                }
+            data: {
+                url: 'https://Tata.Digital.com/ReturnUrl'
+
             }
         }
         axiosMock.post.mockResolvedValueOnce(mockResponse)
@@ -37,19 +35,19 @@ describe('limit details ActionCreators', () => {
         /** Act */
         const expectedActions = [
             {
-                type: REQUEST_ACTIVATE_LIMIT_DETAILS
+                type: REQUEST_DOCUMENT_DETAILS
             },
             {
-                type: RECEIVE_ACTIVATE_LIMIT_DETAILS,
+                type: RECEIVE_DOCUMENT_DETAILS,
                 payload: mockResponse.data
             }
         ]
-        store.dispatch(activateLimitDetails()).then(() => {
+        store.dispatch(documentDetails()).then(() => {
             /** Assert */
             expect(store.getActions()).toEqual(expectedActions)
         })
     })
-    it('should dispatch with `Oops! We could not load the offer details` message when fetching offer details', () => {
+    it('should dispatch FAILURE_DOCUMENT_DETAILS,  with `Oops! We could not load the  details` message when fetching  details', () => {
         /* Arrange */
         const error = {
             message: 'Network Error'
@@ -58,13 +56,13 @@ describe('limit details ActionCreators', () => {
 
         /** Act */
         const expectedActions = [
-            { type: REQUEST_ACTIVATE_LIMIT_DETAILS },
+            { type: REQUEST_DOCUMENT_DETAILS },
             {
-                type: FAILURE_ACTIVATE_LIMIT_DETAILS,
+                type: FAILURE_DOCUMENT_DETAILS,
                 payload: `Oops! We could not load the details`
             }
         ]
-        store.dispatch(activateLimitDetails()).then(() => {
+        store.dispatch(documentDetails()).then(() => {
             /** Assert */
             expect(store.getActions()).toEqual(expectedActions)
         })

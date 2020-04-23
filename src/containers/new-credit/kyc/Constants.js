@@ -1,9 +1,3 @@
-/**
- * @description request aadhar details 
- */
-export const REQUEST_AADHAR_DETAILS = 'REQUEST_AADHAR_DETAILS'
-export const RECEIVE_AADHAR_DETAILS = 'RECEIVE_AADHAR_DETAILS'
-export const FAILURE_AADHAR_DETAILS = 'FAILURE_AADHAR_DETAILS'
 
 /**
  * @description request DOCUMENT details 
