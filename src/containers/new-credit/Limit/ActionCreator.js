@@ -12,7 +12,7 @@ export const activateLimitDetails = () => {
             }
         }
         const data = JSON.stringify({
-            "customerhash": "G876543",
+            "customerhash": "D876543",
             "url": "string"
         })
         return axios

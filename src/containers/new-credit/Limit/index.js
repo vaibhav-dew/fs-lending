@@ -19,21 +19,22 @@ import { togglePopup } from './Actions';
 const Limit = (props) => {
     const limitDetailsReducer = useSelector(state => state.limit)
     const dispatch = useDispatch()
-    const { eligibilityAmount } = props
+    // const { eligibilityAmount } = props
     // "mandateReq": "N",
     // "eligibilityAmount": 15000,
     // "refid": "ac4ce5c0-21fd-4104-8b86-a6efdb1cc2d0",
     // "message": "New Customer Successfully created!"
-    const kycReq = 'N';
+    const kycReq = 'Y';
+    const eligibilityAmount = 15000
     useEffect(() => {
         if (limitDetailsReducer.url !== '') {
-            props.props.history.push(limitDetailsReducer.url)
+            props.history.push(limitDetailsReducer.url)
         }
     }, [limitDetailsReducer.url])
     const handleKyc = () => {
         if (kycReq === 'Y') {
             console.log('clicked')
-            props.props.history.push("/kycdetails");
+            props.history.push("/kycdetails");
         } else if (kycReq === 'N') {
             dispatch(activateLimitDetails())
         }

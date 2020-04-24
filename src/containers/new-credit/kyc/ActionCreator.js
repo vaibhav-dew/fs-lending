@@ -14,7 +14,7 @@ export const documentDetails = (props) => {
             }
         }
         const data = JSON.stringify({
-            "customerhash": "G876543",
+            "customerhash": "D876543",
         })
         return Axios
             .post('http://52.183.135.123:8090/tatapay/lending/document/pickup', data, head)

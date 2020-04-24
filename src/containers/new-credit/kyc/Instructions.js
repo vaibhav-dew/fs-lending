@@ -6,10 +6,13 @@ import {
     InstructionContentContainer, StepContent,
     Steper,
 } from './style';
-import Logo from '../../../Assets/white.svg'
 import PropTypes from 'prop-types'
+import DocumentProof from './DocumentProof'
 
 const AadharInstructions = (props) => {
+    const { value } = props
+    const IdentityProof = ['Pan Card', 'Aadhar Card', 'Passport', 'Voter Id']
+    const AddressProof = ['Utility Bill', 'Aadhar Card', 'Passport', 'Voter Id']
     return (
         <>
             {props.value === 'aadhar' ?
@@ -68,43 +71,14 @@ const AadharInstructions = (props) => {
                         <InstructionContainer>
                             <Instructions style={{ width: '220px', marginTop: '16px' }}>
                                 Accepted Proof of Identity
-                        </Instructions>
-                            <InstructionContentContainer>
-                                <img src={Logo} alt='complete' />
-                                <InstructionContent>Pan Card</InstructionContent>
-                            </InstructionContentContainer>
-                            <InstructionContentContainer>
-                                <img src={Logo} alt='complete' />
-                                <InstructionContent>Aadhar Card</InstructionContent>
-                            </InstructionContentContainer>
-                            <InstructionContentContainer>
-                                <img src={Logo} alt='complete' />
-                                <InstructionContent>Passport</InstructionContent>
-                            </InstructionContentContainer>
-                            <InstructionContentContainer>
-                                <img src={Logo} alt='complete' />
-                                <InstructionContent>Voter Id</InstructionContent>
-                            </InstructionContentContainer>
+            </Instructions>
+                            {IdentityProof &&
+                                IdentityProof.map((id) => <DocumentProof key={id} id={id} />)}
                             <Instructions style={{ width: '220px', marginTop: '16px' }}>
                                 Accepted Proof of Address
-                        </Instructions>
-                            <InstructionContentContainer>
-                                <img src={Logo} alt='complete' />
-                                <InstructionContent>Utility Bill</InstructionContent>
-                            </InstructionContentContainer>
-                            <InstructionContentContainer>
-                                <img src={Logo} alt='complete' />
-                                <InstructionContent>Aadhar Card</InstructionContent>
-                            </InstructionContentContainer>
-                            <InstructionContentContainer>
-                                <img src={Logo} alt='complete' />
-                                <InstructionContent>Passport</InstructionContent>
-                            </InstructionContentContainer>
-                            <InstructionContentContainer>
-                                <img src={Logo} alt='complete' />
-                                <InstructionContent>Voter Id</InstructionContent>
-                            </InstructionContentContainer>
-
+            </Instructions>
+                            {AddressProof &&
+                                AddressProof.map((id) => <DocumentProof key={id} id={id} />)}
                         </InstructionContainer>
                         <InstructionsHeader style={{
                             margin: '22px 16px 0px 16px',
