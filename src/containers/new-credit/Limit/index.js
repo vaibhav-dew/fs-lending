@@ -34,7 +34,7 @@ const Limit = (props) => {
     const handleKyc = () => {
         if (kycReq === 'Y') {
             console.log('clicked')
-            props.history.push("/kycdetails");
+            props.props.history.push("/kycdetails");
         } else if (kycReq === 'N') {
             dispatch(activateLimitDetails())
         }
@@ -42,33 +42,33 @@ const Limit = (props) => {
     const handlePopup = () => {
         dispatch(togglePopup())
     }
-    // if (!props.show) return null
-    // else
-    return (
-        <Container>
-            <Content>
-                <LimitImage
-                    src={Tick}
-                    alt='Tick' />
-                <Header>
-                    Application successful!
+    if (!props.show) return null
+    else
+        return (
+            <Container>
+                <Content>
+                    <LimitImage
+                        src={Tick}
+                        alt='Tick' />
+                    <Header>
+                        Application successful!
                 </Header>
-                <ValueHeader>
-                    Your credit limit is
+                    <ValueHeader>
+                        Your credit limit is
                 </ValueHeader>
-                <Value>
-                    &#8377;{eligibilityAmount}
-                </Value>
-                <ProceedButton>
-                    <ProceedButtonContent onClick={handleKyc}>{kycReq === 'Y' ? 'Proceed' : 'Activate Limit'}</ProceedButtonContent>
-                </ProceedButton>
-                <RedirectContent>
-                    {kycReq === 'Y' ? 'You will be redirected to the Tata Capital website for KYC' : ''}
-                </RedirectContent>
-            </Content>
-            <Popup showError={limitDetailsReducer.isError} togglePopup={handlePopup} />
-        </Container >
-    )
+                    <Value>
+                        &#8377;{eligibilityAmount}
+                    </Value>
+                    <ProceedButton>
+                        <ProceedButtonContent onClick={handleKyc}>{kycReq === 'Y' ? 'Proceed' : 'Activate Limit'}</ProceedButtonContent>
+                    </ProceedButton>
+                    <RedirectContent>
+                        {kycReq === 'Y' ? 'You will be redirected to the Tata Capital website for KYC' : ''}
+                    </RedirectContent>
+                </Content>
+                <Popup showError={limitDetailsReducer.isError} togglePopup={handlePopup} />
+            </Container >
+        )
 }
 
 Limit.propTypes = {

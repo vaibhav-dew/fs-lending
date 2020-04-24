@@ -3,11 +3,13 @@ import Product from './product'
 import { ButtonContent, Button } from './style';
 import { selection, removeSelection } from './Action'
 import { useDispatch, useSelector } from 'react-redux';
+import OTP from '../../credit-line/OTP';
 const ProductList = (props) => {
     const lendingProductDetails = useSelector(state => state.lendingProductReducer)
     const dispatch = useDispatch()
     const { ProductEMIList } = props.prod
     const [selectedProduct, setSelectedProduct] = useState([])
+    const [showOtp, setShowOtp] = useState(false)
     const handleProduct = (e, productDetails) => {
         if (e.target.checked) {
             if (selectedProduct.indexOf(productDetails) === -1) {
@@ -27,8 +29,11 @@ const ProductList = (props) => {
     }
     const handleButton = () => {
         console.log(lendingProductDetails, 'lendingProductDetails')
+        setShowOtp(!showOtp)
     }
-
+    if (showOtp) {
+        return <OTP />
+    }
     return (
         <>
             {
@@ -43,7 +48,7 @@ const ProductList = (props) => {
             }
 
             <Button disabled={!selectedProduct.length > 0} onClick={handleButton} ><ButtonContent> Done</ButtonContent> </Button>
-
+            {/* {showOtp && <OTP />} */}
         </>
     )
 }

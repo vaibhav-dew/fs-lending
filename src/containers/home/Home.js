@@ -45,13 +45,14 @@ const Home = () => {
         <li>
           <Link to='/schemeselection'>Scheme Selection</Link>
         </li>
+        <li>
+          <Link to="/otp"> OTP </Link>
+        </li>
         <hr />
         <li>
           <Link to="/testingcomponent"> Testing </Link>
         </li>
-        <li>
-          <Link to="/otp"> OTP </Link>
-        </li>
+
       </ul>
     </div>
   );
