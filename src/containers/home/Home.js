@@ -45,6 +45,9 @@ const Home = () => {
         <li>
           <Link to="/testingcomponent"> Testing </Link>
         </li>
+        <li>
+          <Link to="/otp"> OTP </Link>
+        </li>
       </ul>
     </div>
   );
