@@ -7,6 +7,8 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
 import panVerificationReducer from "./containers/credit-line/pan-details/Reducer";
 import personalDetails from "./containers/credit-line/PersonalDetails/Reducer"
+import onboarding from "./containers/credit-line/OnboardingForm/Reducer"
+import otp from "./containers/credit-line/OTP/Reducer"
 import { BrowserRouter as Router } from "react-router-dom";
 import { combineReducers } from 'redux'
 import limit from './containers/new-credit/Limit/Reducer'
@@ -15,10 +17,13 @@ import lendingProductReducer from './containers/Multitender/Scheme/Reducer'
 const rootReducer = combineReducers({
   panVerificationReducer,
   personalDetails,
+  onboarding,
+  otp,
   limit,
   kycReducer,
   lendingProductReducer
 })
+
 const store = createStore(
   rootReducer,
   composeWithDevTools(applyMiddleware(thunk))
