@@ -1,8 +1,9 @@
-import Axios from 'axios'
+import axios from 'axios'
 import { requestActivateLimitDetails, receiveActivateLimitDetails, failActivateLimitDetails } from "./Actions";
+import { FS_LENDING_ACTIVATE_LIMIT_API } from './Constants'
 
 
-export const activateLimitDetails = (props) => {
+export const activateLimitDetails = () => {
     return dispatch => {
         dispatch(requestActivateLimitDetails())
         const head = {
@@ -11,16 +12,13 @@ export const activateLimitDetails = (props) => {
             }
         }
         const data = JSON.stringify({
-            "customerhash": "G876543",
+            "customerhash": "D876543",
             "url": "string"
         })
-
-        return Axios
-            .post('http://52.183.135.123:8090/tatapay/lending/activate/limit', data, head)
+        return axios
+            .post(FS_LENDING_ACTIVATE_LIMIT_API, data, head)
             .then(response => {
                 dispatch(receiveActivateLimitDetails(response.data))
-                props.props.history.push(response.data.url)
-
             })
             .catch(err => {
                 dispatch(failActivateLimitDetails(`Oops! We could not load the details`))

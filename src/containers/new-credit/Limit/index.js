@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
     Container,
     Content,
@@ -16,24 +16,35 @@ import Popup from '../Common/Popup';
 import { useDispatch, useSelector } from 'react-redux';
 import { activateLimitDetails } from './ActionCreator';
 import { togglePopup } from './Actions';
-
 const Limit = (props) => {
-    const state = useSelector(state => state)
+    const limitDetailsReducer = useSelector(state => state.limit)
     const dispatch = useDispatch()
-    const limit = '15000';
-    const kycreq = 'N';
+    // const { eligibilityAmount } = props
+    // "mandateReq": "N",
+    // "eligibilityAmount": 15000,
+    // "refid": "ac4ce5c0-21fd-4104-8b86-a6efdb1cc2d0",
+    // "message": "New Customer Successfully created!"
+    const kycReq = 'Y';
+    const eligibilityAmount = 15000
+    useEffect(() => {
+        if (limitDetailsReducer.url !== '') {
+            props.history.push(limitDetailsReducer.url)
+        }
+    }, [limitDetailsReducer.url])
     const handleKyc = () => {
-        if (kycreq === 'Y') {
-            props.props.history.push('/kycdetails')
-        } else if (kycreq === 'N') {
-            dispatch(activateLimitDetails(props))
+        if (kycReq === 'Y') {
+            console.log('clicked')
+            props.history.push("/kycdetails");
+        } else if (kycReq === 'N') {
+            dispatch(activateLimitDetails())
         }
     }
     const handlePopup = () => {
         dispatch(togglePopup())
     }
-    if (!props.show) return null
-    else return (
+    // if (!props.show) return null
+    // else
+    return (
         <Container>
             <Content>
                 <LimitImage
@@ -46,23 +57,23 @@ const Limit = (props) => {
                     Your credit limit is
                 </ValueHeader>
                 <Value>
-                    &#8377;{limit}
+                    &#8377;{eligibilityAmount}
                 </Value>
                 <ProceedButton>
-                    <ProceedButtonContent onClick={handleKyc}>{kycreq === 'Y' ? 'Proceed' : 'Activate Limit'}</ProceedButtonContent>
+                    <ProceedButtonContent onClick={handleKyc}>{kycReq === 'Y' ? 'Proceed' : 'Activate Limit'}</ProceedButtonContent>
                 </ProceedButton>
                 <RedirectContent>
-                    {kycreq === 'Y' ? 'You will be redirected to the Tata Capital website for KYC' : ''}
+                    {kycReq === 'Y' ? 'You will be redirected to the Tata Capital website for KYC' : ''}
                 </RedirectContent>
             </Content>
-            <Popup showError={state.limit.isEerror} togglePopup={handlePopup} />
+            <Popup showError={limitDetailsReducer.isError} togglePopup={handlePopup} />
         </Container >
     )
 }
 
 Limit.propTypes = {
-    limit: PropTypes.string.isRequired,
-    kycreq: PropTypes.string.isRequired,
+    limit: PropTypes.string,
+    kycReq: PropTypes.string,
 }
 
 export default Limit

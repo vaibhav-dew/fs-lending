@@ -4,13 +4,16 @@ import personalDetails from "./PersonalDetails/Reducer";
 import onboardingForm from "./OnboardingForm/Reducer";
 import limit from '../new-credit/Limit/Reducer';
 import kycReducer from '../new-credit/kyc/Reducer'
+import lendingProductReducer from '../Multitender/Scheme/Reducer'
+
 
 const rootReducer = combineReducers({
   personalDetails,
   panVerificationReducer,
   onboardingForm,
   limit,
-  kycReducer
+  kycReducer,
+  lendingProductReducer
 });
 
 export default rootReducer;
