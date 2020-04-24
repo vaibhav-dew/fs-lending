@@ -7,36 +7,18 @@ import TermsAndConditions from "./TermsAndConditions";
 // import TCPNav from "../../../components/TCPNav";
 // Added by harsh
 import Limit from "../../new-credit/Limit";
-import {
-  Navbar,
-  NavbarRoute,
-  NavbarHead,
-  NavbarSubHead,
-  NavbarHeadContent
-} from '../../new-credit/kyc/style'
+import NewNavbar from "../../new-credit/Common/new-navbar";
 // Added by harsh
 
 const OnboardingForm = (props) => {
   const [showTC, setShowTC] = useState(false);
   // Added by harsh
   const [limit, setLimit] = useState(false);
-  const navbarRoute = () => props.history.push('/')
   // Added by harsh
   return (
     <div>
       {/* Navbar added by harsh */}
-      <Navbar>
-        <NavbarHead>
-          <NavbarRoute onClick={navbarRoute}>
-            {/* <img style={{}} */}
-            <div style={{ height: '16px', width: '10px', margin: '4px 7px 4px 7px' }}>
-              &lt;
-                            </div>
-          </NavbarRoute>
-          <NavbarHeadContent>Tata Credit Line</NavbarHeadContent>
-        </NavbarHead>
-        <NavbarSubHead>Step 2/3</NavbarSubHead>
-      </Navbar>
+      <NewNavbar />
       {/* Navbar added by harsh */}
       {/* <TCPNav /> */}
       <Location />

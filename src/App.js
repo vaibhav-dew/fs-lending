@@ -14,7 +14,7 @@ import Limit from "./containers/new-credit/Limit";
 import TestingComponent from './TestingPratice/index'
 import Tata from "./containers/new-credit/dummy-tata-capital";
 import OTP from "./containers/credit-line/OTP";
-
+import Scheme from './containers/Multitender/Scheme/index'
 const App = () => {
   return (
     <Router>
@@ -58,6 +58,10 @@ const App = () => {
         <Route
           path='/otp'
           component={OTP}
+        />
+        <Route
+          path='/schemeselection'
+          component={Scheme}
         />
       </Switch>
     </Router>
