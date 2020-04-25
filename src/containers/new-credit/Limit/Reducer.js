@@ -1,4 +1,4 @@
-import { REQUEST_ACTIVATE_LIMIT_DETAILS, RECEIVE_ACTIVATE_LIMIT_DETAILS, FAILURE_ACTIVATE_LIMIT_DETAILS } from "./Constants"
+import { REQUEST_ACTIVATE_LIMIT_DETAILS, RECEIVE_ACTIVATE_LIMIT_DETAILS, FAILURE_ACTIVATE_LIMIT_DETAILS, RESET_STATE } from "./Constants"
 import { TOGGLE_POPUP } from "../kyc/Constants"
 
 const defaultState = {
@@ -32,6 +32,8 @@ const activateLimitReducer = (state = defaultState, action) => {
                 ...state,
                 isError: false
             }
+        case RESET_STATE:
+            return state
         default:
             return state
     }

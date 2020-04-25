@@ -30,3 +30,11 @@ export const failActivateLimitDetails = (data) => ({
 export const togglePopup = () => ({
     type: actionTypes.TOGGLE_POPUP
 })
+
+export const resetState = (data) => {
+    console.log('mai yaha aaya')
+    return {
+        type: actionTypes.RESET_STATE,
+        payload: data
+    }
+}

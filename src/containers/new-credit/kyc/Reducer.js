@@ -2,7 +2,8 @@ import {
     REQUEST_DOCUMENT_DETAILS,
     RECEIVE_DOCUMENT_DETAILS,
     FAILURE_DOCUMENT_DETAILS,
-    TOGGLE_POPUP
+    TOGGLE_POPUP,
+    RESET_STATE
 } from './Constants'
 const defaultState = {
     isLoading: false,
@@ -34,6 +35,8 @@ const kycReducer = (state = defaultState, action) => {
                 ...state,
                 isError: false
             }
+        case RESET_STATE:
+            return state
         default:
             return state
     }

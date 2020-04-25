@@ -9,11 +9,12 @@ export const activateLimitDetails = () => {
         const head = {
             headers: {
                 'Content-Type': 'application/json',
+                'Subscription-Key': '354d9be9edce479fbd797edc71ebf50b'
             }
         }
         const data = JSON.stringify({
-            "customerhash": "D876543",
-            "url": "string"
+            "customerhash": "G876543",
+            "url": "string",
         })
         return axios
             .post(FS_LENDING_ACTIVATE_LIMIT_API, data, head)
