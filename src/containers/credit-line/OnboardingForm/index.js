@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PanDetails from "./PanDetails";
 import Location from "./Location";
 import PersonalDetails from "./PersonalDetails";
@@ -8,6 +8,7 @@ import TermsAndConditions from "./TermsAndConditions";
 // Added by harsh
 import Limit from "../../new-credit/Limit";
 import NewNavbar from "../../new-credit/Common/new-navbar";
+
 // Added by harsh
 
 const OnboardingForm = (props) => {
@@ -15,6 +16,7 @@ const OnboardingForm = (props) => {
   // Added by harsh
   const [limit, setLimit] = useState(false);
   // Added by harsh
+
   return (
     <div>
       {/* Navbar added by harsh */}

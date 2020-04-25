@@ -12,7 +12,7 @@ import OnboardingForm from "./containers/credit-line/OnboardingForm";
 import NewKyc from "./containers/new-credit/kyc";
 import Limit from "./containers/new-credit/Limit";
 import TestingComponent from './TestingPratice/index'
-import Tata from "./containers/new-credit/dummy-tata-capital";
+// import Tata from "./containers/new-credit/dummy-tata-capital";
 import OTP from "./containers/credit-line/OTP";
 import Scheme from './containers/Multitender/Scheme/index'
 const App = () => {
@@ -51,17 +51,18 @@ const App = () => {
           path='/testingcomponent'
           component={TestingComponent}
         />
-        <Route
+        {/* <Route
           path='/tatacapital'
           component={Tata}
+        /> */}
+
+        <Route
+          path='/schemeselection'
+          component={Scheme}
         />
         <Route
           path='/otp'
           component={OTP}
-        />
-        <Route
-          path='/schemeselection'
-          component={Scheme}
         />
       </Switch>
     </Router>

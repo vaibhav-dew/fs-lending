@@ -83,6 +83,8 @@ const OTP = (props) => {
     setEnableResend(false)
     authOtp({ ...otpData, otpValue: otp.join().replace(/,/g, '') })
   }
+  // if (!props.show) return null
+  // else 
   return (
     <OtpWrapper>
       <OtpBox>
@@ -115,14 +117,14 @@ const OTP = (props) => {
                 {timerOn ? (
                   'Resend OTP'
                 ) : (
-                  <HyperLinkSpan
-                    onClick={resendOtp}
-                    color='primary'
-                    decoration='none'
-                  >
-                    Resend OTP
+                    <HyperLinkSpan
+                      onClick={resendOtp}
+                      color='primary'
+                      decoration='none'
+                    >
+                      Resend OTP
                   </HyperLinkSpan>
-                )}{' '}
+                  )}{' '}
                 {timerTime > 0 && (
                   <span>
                     in{' '}
@@ -165,7 +167,7 @@ OTP.propTypes = {
 
 const mapStateToProps = (state) => {
   const {
-      otp: { otpSending, otpError, otp, authSending, authError, auth }
+    otp: { otpSending, otpError, otp, authSending, authError, auth }
   } = state
   return {
     otpSending,
