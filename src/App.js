@@ -15,6 +15,7 @@ import TestingComponent from './TestingPratice/index'
 // import Tata from "./containers/new-credit/dummy-tata-capital";
 import OTP from "./containers/credit-line/OTP";
 import Scheme from './containers/Multitender/Scheme/index'
+import Steps from "./containers/Servicing/Steps";
 const App = () => {
   return (
     <Router>
@@ -51,10 +52,10 @@ const App = () => {
           path='/testingcomponent'
           component={TestingComponent}
         />
-        {/* <Route
-          path='/tatacapital'
-          component={Tata}
-        /> */}
+        <Route
+          path='/steps'
+          component={Steps}
+        />
 
         <Route
           path='/schemeselection'

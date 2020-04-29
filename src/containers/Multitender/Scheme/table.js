@@ -72,19 +72,28 @@ const Table = (props) => {
     const dispatch = useDispatch()
     const { prod, selectedProduct } = props
     var headerArray = ['', 'Tenure (in Months)', 'Total Interest', 'Emi Per Month', 'Processing Fee', 'Advance EMI']
-    // useEffect(() => {
-    // }, [dispatch])
     if (prod.TenureEMIList.reduce((a, b) => a + b.AdvanceEMI, 0) === 0) {
         headerArray = headerArray.slice(0, headerArray.length - 1)
     }
     const handleSelect = (list, prod) => {
         lendingProductDetails.selection && lendingProductDetails.selection.map((value) => {
             if (prod.ModelCode === value.ModelCode) {
-                value['selected Emi'] = list
+                value['selected_Emi'] = list
+                dispatch(selection(selectedProduct))
+                // return;
             }
+            // dispatch(selection(selectedProduct))
             return false;
         })
-        dispatch(selection(selectedProduct))
+        // dispatch(selection(selectedProduct))
+        // for (var i = 0; i < selectedProduct.length; i++) {
+        //     if (prod.ModelCode === selectedProduct[i].ModelCode) {
+        //         selectedProduct[i]['selected_Emi'] = list
+        //         console.log(selectedProduct[i]['selected_Emi'])
+        //         dispatch(selection(selectedProduct))
+        //         break;
+        //     }
+        // }
     }
     return (
         <table style={table} >
@@ -107,7 +116,11 @@ const Table = (props) => {
                 {
                     props.prod.TenureEMIList && props.prod.TenureEMIList.map((list, index) => (
                         <tr style={tableRow} list={list} key={list.Tenure} onChange={() => handleSelect(list, props.prod)} >
-                            <td style={tableRowData}><input type='radio' name={prod.ModelCode} defaultChecked={index === 0} style={{ height: '20px', width: '20px' }} /></td>
+                            <td style={tableRowData}><input type='radio'
+                                name={prod.ModelCode}
+                                id='prod'
+                                // defaultChecked={index === 0}
+                                style={{ height: '20px', width: '20px' }} /></td>
                             <td style={tableRowData}>{list.Tenure}</td>
                             <td style={tableRowData}>&#8377;{list.Interest}</td>
                             <td style={tableRowData}>&#8377;{list.EMI}</td>

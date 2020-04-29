@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
-  height: ${props => (props.value === 'document' ? '947px' : '760px')};
+  height:auto;
+  min-height: ${props => (props.value === 'document' ? '947px' : '760px')};
   -webkit-backdrop-filter: blur(2px);
   backdrop-filter: blur(2px);
   background-color: #1e1e1e;
@@ -90,7 +91,7 @@ export const Steper = styled.div`
         font-size:12px;
         margin-top:5px;
         `
-export const StepContent = styled.div`
+export const StepContent = styled.p`
   height: 12px;
   font-size: 12px;
   font-weight: 600;
@@ -98,6 +99,7 @@ export const StepContent = styled.div`
   color: #000000;
   text-align: center;
   line-height: 17px;
+  margin:0px;
 `
 export const InstructionContent = styled.p`
   width: 275px;
@@ -117,7 +119,7 @@ width: 380px;
     outline:none;
 
 `
-export const ButtonContent = styled.div`
+export const ButtonContent = styled.p`
 width: 380px;
   height: 24px;
   font-size: 18px;
@@ -126,7 +128,7 @@ width: 380px;
   text-align: center;
   color: #1e1e1e;
 `
-export const LinkContent = styled.div`
+export const LinkContent = styled.p`
   width: 319px;
   height: 22px;
   font-size: 14px;
