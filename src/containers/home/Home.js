@@ -49,6 +49,8 @@ const Home = () => {
           <Link to="/otp"> OTP </Link>
         </li>
         <hr />
+        <li><Link to='/steps'>Steps</Link></li>
+        <hr />
         <li>
           <Link to="/testingcomponent"> Testing </Link>
         </li>

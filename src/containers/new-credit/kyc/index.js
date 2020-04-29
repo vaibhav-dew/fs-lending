@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import {
     Container,
     ContentHead,
@@ -23,19 +23,16 @@ const NewKyc = props => {
     const dispatch = useDispatch();
     const kycDetailsReducer = useSelector(state => state.kycReducer)
     const [selectedTag, setselectedTag] = useState("");
-    const [ecsData, setEcsData] = useState(
-        "{\"clientId\":\"TDG_WEB\",\"data\":\"pXFG0vxIYcKseDqEmmV6kVhkhq+r5jDg5ucUOswh4w0VwjbVCnYvDPQSa3raS8VzI1hxgxKzs6xuf6dXtkIjXgJWyC4AWVLIY5LSg+wURvGtfG6QmK60vPO\\/6\\/nSVzf4wF8KWI7fH1hBfKFxnv09sEs+Ac65X+HY\\/pbw\\/PuJHGceYuVmd+s2qzK5NjeE3UDuUF8s98W+DJ\\/ECKTlgEaBhAqzyu\\/p4FTXcjnFnQN3w5q2aH\\/uojw+b0vbuYoFMFHMRcXt7yW1Wq9aWX67kMZJQ\\/noI4zeAfex30BznxpUL3f83FzBR91JyJ2nRhb4rLUtjwvwE6sRddoDsb6Dt7kJGH89EZnUND3SiZADL8skNYbGpvQirWTAjp4DKLN2iVvkCeVPYHxzkFNjXwuB+nVgu8HSNz6mMsapz6b4C9IefbzoUBIMhZkanD9UAhxU8eQlQ66ebcWml8ai7w\\/3UBXenTz2LRri2cauNdaqAdSUznUjinnMgbowxX7tSn0Gfdr7MmPMr9KOnI9LVasTkK6GCLIPgs\\/Nw1PyVHIy6IRgg0K5av4Ng+\\/0d7WEVlMIOTbkjjK+5gv5HXFsrnV8iECMQ2l5ga89fqXT0wNDGWzM9PF2mRLq6u+F2hQPjP9wuAB4cnUi+YXJrypXVnX7Fnl9IB35LL5mxYQXqxENXOgEl4VmzITFdDD3zLFFGfxBLcmFyLRSjKBDMqnP+VHhoj7+yPLRUGlZ1+Ug3w8q+ltmrJJoTBLX5tfp1ByfpPqggAoMZ9aAaTUb\\/tbnkUHntj3S9JKfyD7oiFSmvGSY06zntZolw4zgtaCCdMSkVVRmH8DtW8Qm9QwSAoL2CAUcJSmu0w==\",\"signature\":\"xD5CE8VSkW6BEwkSWuM9UKbxrma2oCBkM5vFpVlGtRsSRJif\\/RSZ9NiwtoOJP\\/PLrPVNGXtkLxowJe+pICcTsPrKPThZ3\\/g3dHOwvtdjVI\\/+YfqTRqy7FIj\\/tPP1lIXrANDwf8Lu7T2ZXp0+KW5zMq7AU3GK1HkdQrZK66gM1h5BQQjAQicZEZOGpA7nj81gDAGNXAiM0jjralEMnCgZ6zNwHoxTA46booAm6IQ7RErLFIjhJ927OMqyBVF1y78QytUYiheAvZADiaX4qyPVAbotQzoZnM41wbTFTkWfgdR5ePqCfCPdhSOvShUA7v4lg3gnxkUYs\\/2ihnZGddsAvQ==\",\"skey\":\"L0Fy7h09nBAhTT0lBPps3IVPLcMUNC62t0W+qbMylhe88tVhiOMqNKwU2XmwMXFAa3Dx+LzXtFW1iO5nAYwQi6Hi7CpVl+xfZ47rA3cmanrH+Fpf1OlgDYxKpNjxZyaA3JR4RWxKexaGaFxMAARQMVZPgc4wFfLlJra1Qguh2\\/1n8Nji2FlueaJfvZtqaWuxWkXiGxkWuAEGlB3ew21hqeOk9eOe5zPHZupvEXfQIRo4Zwm\\/TI016HUJyM10ikijwkUCV5IeVv2R4bNpgvOBnRvz8LTNL6NISDOp\\/KPkDGD2x4uWIOi38H+iODcBsNt6QAX1EH4VUPV+lj4P\\/XTIrg==\"}"
-    )
-    const ecs = {
-        "clientId": "TDG_WEB",
-        "data": "OlhaIoXAYzY78lGvXuIN3TbG4GmBt4rhuZFb5uxhC/N8XgCZvpl2TiuS2TTX6aoa8LAD3IZ9V7FFPWRWIc6p7pqLONQUzq60VNKv4+o62v/5uNb/4cpQTrA+MnB2ukqHuNLQ3iMti6hFA3WJkVEV04CarwX5cvIabae8xhCQcFfnHGP3/smWkypPlKmPppIs28vKOoTnbLwqjES8la/ZhwmZsEqr04KKZF3Gn9b73fhrAwV9YVX2qLM3QT1LoEvFzzKvu8TAPO/U33D/obuzyVH/b6DkLb63Wed+HFSPySAZosfwMKhAN/mC1H8vTFGK/mDQc0FtQ4f2m0iB2JgvOMlh1YYx6yJ3T8UzMX8yWFXntvxHaec83wbkvOa7MURuFIhoqPfuT7xprRHUEw0LqiW2MUr0RNg+7ktCSpC+/boyrB6AUTs+ZsOfWxeyXxxk56BHYlWbm1HVhgPIEALst+DMVRirX/7jD1udzXuOd/6ACkAu4NNmf5nTSaKU/RR6vDwpNjEFG+VOKUjkInWeHe/ghMDNT016EUXYpTzJvtSWu48APhAK7hdnQVfZjRxIkiD6K+sA2bL3ylL82fNDni3fAevUyEvy7bYiKBORlOQ1Ow5eI1SSuwaTg5uQ6g7o+d0VAvKkpmiFjMOa5h6pSSHpQWyBmt1Pj4uJOL1vTSY8a95iXQrA18hKX83cUwiBvVvDQ4SBnCfwewIhSnPkDtxU453OyzNyi1D3IOXizhv1i3+6uo699dW3So3OLRA8Uf9voOQtvrdZ534cVI/JIN6Y9/hawZx43xDn/Wcvu3FE5RO5b48JG1OrlQ7HBSIxOFXB7mElhEnFZUVWxCoUfA==",
-        "signature": "DYi4c4fgsc5JriYevsrM2u8LlhOHt5LlRZubk0kAeV3lcnT6dTJfvkM14LnxEQrpglYyLQbI9RXn2ru23b+nq7sJaJBZaiwc4CMwRBFw7E+Bd3401z2C4l4oAT/1xHahCS28xFyuQlfJnoldQAZV24lCIIGIeeFOI1h6uRt7E+feawl47yKbPJDw6PRjBGEyJ9oHPPRUrOYwfkmbv3C+QYNOd7ta3FCYCrlIpx0/TPb23ZQ8JdJSVb8uIzlffXBDsE8pZP05O/9cPGn8RHRm0DbbWSkxohbo+vvgUWaKies9iSE4U04SVt6QrkfPX6LN5tvOvjRRQpaNIX7FAUpKrw==",
-        "skey": "eZlFFUaaGuX0z7okPVBjHnGLbWMSOtYcXezmO+m8ZXFOM3s+yxhbnXshuNB7HdsObD8UPtOqhl4j7PdiCgIElwKho9O5aqBSW+Na2bipYlFoD0tDnonZ8DOfAB+R3bStYU6CvoewoB9y6bJhWTNFDcK0fx8l5ANHnrs7CLhkT6oZcxawu1wLVlUrW17CVICTlpL5nbesfBBSiX+kyJ+8XWu/DBTFAMEM/erH2keAUbTCRUC3f4xe6XBaG0CGxJVmcikNaXo+gOsb/2xPnUy/B13kqjNEnk+r99wfLmAgSzdC4a4VF3VVarYmqib4fuLRqBMkTaRBqMfBifwRdQ321Q=="
-    }
+    // const [ecsData, setEcsData] = useState(
+    //     '{"clientId":"TDG_WEB","data":"sGk9Z2pZNJu6tZ9t9yIJiyhW3ynsFxoSRbnImHvo9aKbmXo5Y8OTUvAq/O26+aSJJfcaEB/PVlBv2HUneDuNQ19aPfAo1YEEsH3fBQqflnzsH7gyGAABD2TjlrEeZj1AVMqGKGGuyepJ8ivi+PaiXcb25+Gog4bXt8ucYcxcPlTk/UIJaTWOEad8R3Ckl67ykCRsobiubJTT+W258ltBsUVpX1cp7MfDYsB8PBBreWjIN9tR8K91pNIzcA3R/madu4DV4jR8NRizz9j+zLAS5zXiWtGPKKVdvbWzesdSuMJU8sqGgJiu5iLSdz1YHhtxFBi9vOq9iNstsnEssglaMjF8qOOaTlzCf00FPBAlb+PO0UcN3j14k/ioDIVC/sCHKiclcn7gjLAj4T0o8dXHv5uSiPT89W6CCfIc8W6qCrmD7pVlfPI7m6fgoxQsQ206","signature":"EuYkXY/C3BPYddR+UKEN8e0/s7jngH0W1OKDfWIBsy6iRQ7hLhXxlwU479MvM1fhWsP18FV+5cStvXe9HNi4w1MMU3TccCEOh5u5vj8lftXkiEli+R6IexckujkyHooCbKtxzlEJjPa49sC1QFk+lHTdQKFxOzjo3uDWijHZilRNSAmeQuJd2DBUAGFmnS9sa8qg1zg8L7ay9v6bY6A+08jo4uVdDI+9yZCR9xWa7Q020z2XNZ4JzeeToIWE6XTOwRypXysPKj6p97tecrb7P3PY0C0Zrtb0QaLEIjrOTJrbS1N4gNWI79Hlz4EqkfVW0GVkPf9eRwjDdB9AdX5o1w==","skey":"D0jxNX9KBO0piAFX8n0KiFTQoCsrSkV+CyrOqndbFew9zTg7H5pnKX5y2YjAffkOiy7UrCX/54Ujh3YbQzOchAOrGR1k22vcQXilbX9Ym4QTIyxJEMBxIfcud9uWoVWPOuV6L8wDXYSfRNPcLsyAoYoPMJXvQW2Dr4lktxmbv3TFbp17uWe56wI9BCxPJbDMeWiqpd5f7O2psc7tFH4EVzeM4TZewqwdY3pAdxuudam1pV20rM1rgZY0yCPSPXW1fO06D+ZNyLeK8BfcYjVlv6MioqocDPYSmxb/KinM5M3a1GSxWG/3bBHWy1jbwiripYVNbMuLHhPkBHwEHa/dhA=="}'
+    // )
+    const [ecsData, setEcsData] = useState('')
     const handleOption = e => setselectedTag(e.target.value);
+    const ecsRef = useRef(null);
     useEffect(() => {
         if (kycDetailsReducer.url !== '') {
-            props.history.push(kycDetailsReducer.url)
+            // props.history.push(kycDetailsReducer.url)
+            window.location.assign(kycDetailsReducer.url);
         }
         return (() => {
             dispatch(resetState(kycDetailsReducer.url = ''))
@@ -53,14 +50,18 @@ const NewKyc = props => {
             const data = JSON.stringify({
                 "customerhash": "string",
             })
+            // setEcsData(JSON.stringify(ecsData));
+            console.log('escccccccccc', ecsData)
+            // ecsRef.current.submit()
             Axios
                 .post('http://52.183.135.123:8090/tatapay/lending/generate/token/forchannel', data, head).then(res => res)
                 .then((res) => {
                     console.log(res.data.token)
-                    // debugger;
-                    // setEcsData(JSON.stringify(ecsData));
+                    // setEcsData(JSON.stringify(res.data.token));
+                    setEcsData(res.data.token)
                     console.log('escccccccccc', ecsData)
-                    document.getElementById("ecsForm").submit()
+                    ecsRef.current.submit()
+                    // document.getElementById("frmRequest").submit()
                 })
                 .then(() => document.getElementById("ecsForm").submit())
                 .catch((err) => {
@@ -75,7 +76,17 @@ const NewKyc = props => {
     }
     return (
         <>
-            <form action='https://okyc.tatacapital.com/EcsOkycWeb/ProcessRequest.jsp' method="POST" id="ecsForm"><input type="hidden" name="WEBAPI_REQUEST_DATA" value={ecsData} /></form>
+            {/* <form action='https://okyc.tatacapital.com/EcsOkycWeb/ProcessRequest.jsp' method="POST" id="ecsForm">
+                <input type="hidden" name="WEBAPI_REQUEST_DATA" value={ecsData} />
+            </form> */}
+            <form ref={ecsRef} id="frmRequest" action='https://okyc.tatacapital.com/EcsOkycWeb/ProcessRequest.jsp'
+                method="POST">
+                <input type="hidden" id="WEBAPI_REQUEST_DATA"
+                    name="WEBAPI_REQUEST_DATA"
+                    value={ecsData}
+                // value='{"clientId":"TDG_WEB","data":"sGk9Z2pZNJu6tZ9t9yIJiyhW3ynsFxoSRbnImHvo9aKbmXo5Y8OTUvAq/O26+aSJJfcaEB/PVlBv2HUneDuNQ19aPfAo1YEEsH3fBQqflnzsH7gyGAABD2TjlrEeZj1AVMqGKGGuyepJ8ivi+PaiXcb25+Gog4bXt8ucYcxcPlTk/UIJaTWOEad8R3Ckl67ykCRsobiubJTT+W258ltBsUVpX1cp7MfDYsB8PBBreWjIN9tR8K91pNIzcA3R/madu4DV4jR8NRizz9j+zLAS5zXiWtGPKKVdvbWzesdSuMJU8sqGgJiu5iLSdz1YHhtxFBi9vOq9iNstsnEssglaMjF8qOOaTlzCf00FPBAlb+PO0UcN3j14k/ioDIVC/sCHKiclcn7gjLAj4T0o8dXHv5uSiPT89W6CCfIc8W6qCrmD7pVlfPI7m6fgoxQsQ206","signature":"EuYkXY/C3BPYddR+UKEN8e0/s7jngH0W1OKDfWIBsy6iRQ7hLhXxlwU479MvM1fhWsP18FV+5cStvXe9HNi4w1MMU3TccCEOh5u5vj8lftXkiEli+R6IexckujkyHooCbKtxzlEJjPa49sC1QFk+lHTdQKFxOzjo3uDWijHZilRNSAmeQuJd2DBUAGFmnS9sa8qg1zg8L7ay9v6bY6A+08jo4uVdDI+9yZCR9xWa7Q020z2XNZ4JzeeToIWE6XTOwRypXysPKj6p97tecrb7P3PY0C0Zrtb0QaLEIjrOTJrbS1N4gNWI79Hlz4EqkfVW0GVkPf9eRwjDdB9AdX5o1w==","skey":"D0jxNX9KBO0piAFX8n0KiFTQoCsrSkV+CyrOqndbFew9zTg7H5pnKX5y2YjAffkOiy7UrCX/54Ujh3YbQzOchAOrGR1k22vcQXilbX9Ym4QTIyxJEMBxIfcud9uWoVWPOuV6L8wDXYSfRNPcLsyAoYoPMJXvQW2Dr4lktxmbv3TFbp17uWe56wI9BCxPJbDMeWiqpd5f7O2psc7tFH4EVzeM4TZewqwdY3pAdxuudam1pV20rM1rgZY0yCPSPXW1fO06D+ZNyLeK8BfcYjVlv6MioqocDPYSmxb/KinM5M3a1GSxWG/3bBHWy1jbwiripYVNbMuLHhPkBHwEHa/dhA=="}'
+                />
+            </form>
             <Container value={selectedTag}>
                 <NewNavbar />
                 <ContentHead>
